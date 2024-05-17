@@ -63,212 +63,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Hexo系列 搭建博客网站</title>
-    <url>/2024/05/17/Hexo-Create-Blog/</url>
-    <content><![CDATA[<p><strong>写在前面的话</strong>：本系列文章主要参考 <a href="https://hexo.io/zh-cn/docs/index.html">Hexo官方说明文档</a>，同时结合自己在使用过程中的一些心得体会，撷取下来，和大家分享分享。好，下面闲话不多说，马上开始我们的 Hexo 之旅吧</p>
-<p><strong>温馨提醒</strong>：博主使用的操作系统是 Win10，其他操作系统可能会略有不同</p>
-<h2 id="一、Hexo-简介"><a href="#一、Hexo-简介" class="headerlink" title="一、Hexo 简介"></a>一、Hexo 简介</h2><p>Hexo 是什么呢？也许引用官方文档中的说明是再好不过了：</p>
-<blockquote>
-<p>Hexo 是一个快速、简洁且高效的 <strong>博客框架</strong>。它使用 Markdown（或其他渲染引擎）解析文章，在数秒内，即可使用靓丽的主题生成静态网页</p>
-</blockquote>
-<h2 id="二、Hexo-安装"><a href="#二、Hexo-安装" class="headerlink" title="二、Hexo 安装"></a>二、Hexo 安装</h2><h3 id="1、安装-Git"><a href="#1、安装-Git" class="headerlink" title="1、安装 Git"></a>1、安装 Git</h3><blockquote>
-<p>Git 是一个开源的分布式版本控制系统</p>
-</blockquote>
-<p>下载地址：<a href="https://git-scm.com/download%EF%BC%8C%E6%8C%89%E7%85%A7%E9%BB%98%E8%AE%A4%E5%82%BB%E7%93%9C%E5%BC%8F%E5%AE%89%E8%A3%85%E5%B0%B1%E5%A5%BD%E4%BA%86">https://git-scm.com/download，按照默认傻瓜式安装就好了</a></p>
-<p>补充一句，如果你已经安装了 Git，你可以通过 Git 本身获得最新的开发版本：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git <span class="built_in">clone</span> https://github.com/git/git</span></span><br></pre></td></tr></table></figure>
-
-<p>完成之后到桌面空白处单击鼠标右键，如果有出现 <code>Git Bash Here</code> 选项，则证明已经安装成功</p>
-<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185523288-1355703319.png" alt="img"></p>
-<h3 id="2、安装-Node-js"><a href="#2、安装-Node-js" class="headerlink" title="2、安装 Node.js"></a>2、安装 Node.js</h3><blockquote>
-<p>Node.js 是一个基于 Google V8 引擎的 JavaScript 环境，它支持在后端运行 JavaScript</p>
-<p>而 NPM 是默认与 Node.js 一起安装的包管理工具</p>
-</blockquote>
-<p>下载地址：<a href="https://nodejs.org/en%EF%BC%8C%E5%90%8C%E6%A0%B7%E6%98%AF%E6%8C%89%E7%85%A7%E9%BB%98%E8%AE%A4%E5%82%BB%E7%93%9C%E5%BC%8F%E5%AE%89%E8%A3%85%E5%B0%B1%E5%A5%BD%E4%BA%86">https://nodejs.org/en，同样是按照默认傻瓜式安装就好了</a></p>
-<p>完成之后到桌面空白处点击鼠标右键，选择 <code>Git Bash Here</code> 进入 bash 窗口</p>
-<p>输入 <code>node -v</code> 命令可查看 node 版本，输入 <code>npm -v</code> 命令可查看 npm 版本，用于验证安装是否成功</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>node -v</span><br><span class="line">v8.<span class="number">11.3</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$ </span>npm -v</span><br><span class="line"><span class="number">5.6</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="3、下载-Hexo"><a href="#3、下载-Hexo" class="headerlink" title="3、下载 Hexo"></a>3、下载 Hexo</h3><p>在之前说过，NPM 是一个包管理工具，因此我们可以通过 NPM 工具下载 Hexo 框架</p>
-<p><code>npm install moduleName</code> 命令用于下载模块，其中 <code>-g</code> 参数表示在全局进行安装</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>npm install -g hexo</span><br></pre></td></tr></table></figure>
-
-<p>等待完成之后，输入命令 <code>hexo -v</code> 查看 Hexo 版本，验证安装是否成功</p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">$ hexo -v</span><br><span class="line"><span class="section">hexo: 3.7.1</span></span><br><span class="line"><span class="section">hexo-cli: 1.1.0</span></span><br><span class="line"><span class="section">os: Windows_NT 10.0.16299 win32 x64</span></span><br><span class="line"><span class="section">http_parser: 2.8.0</span></span><br><span class="line"><span class="section">node: 8.11.3</span></span><br><span class="line"><span class="section">v8: 6.2.414.54</span></span><br><span class="line"><span class="section">uv: 1.19.1</span></span><br><span class="line"><span class="section">zlib: 1.2.11</span></span><br><span class="line"><span class="section">ares: 1.10.1-DEV</span></span><br><span class="line"><span class="section">modules: 57</span></span><br><span class="line"><span class="section">nghttp2: 1.32.0</span></span><br><span class="line"><span class="section">napi: 3</span></span><br><span class="line"><span class="section">openssl: 1.0.2o</span></span><br><span class="line"><span class="section">icu: 60.1</span></span><br><span class="line"><span class="section">unicode: 10.0</span></span><br><span class="line"><span class="section">cldr: 32.0</span></span><br><span class="line"><span class="section">tz: 2017c</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="三、Hexo-本地建站"><a href="#三、Hexo-本地建站" class="headerlink" title="三、Hexo 本地建站"></a>三、Hexo 本地建站</h2><h3 id="1、本地建站"><a href="#1、本地建站" class="headerlink" title="1、本地建站"></a>1、本地建站</h3><p>选择一个合适的位置创建一个文件夹，该文件夹将作为 Hexo 的根目录，用来储存本地文件</p>
-<p>进入该文件夹打开 git bash 窗口，输入命令 <code>hexo init</code> 和 <code>npm install</code></p>
-<p><code>hexo init</code> 命令可以将该文件夹初始化为 Hexo 根目录</p>
-<p><code>npm install</code> 命令可以自动安装依赖列表中列出的所有模块</p>
-<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">$ hexo init</span><br><span class="line">INFO  <span class="keyword">Cloning </span>hexo-starter to file</span><br><span class="line">......</span><br><span class="line">INFO  <span class="keyword">Install </span>dependencies</span><br><span class="line">......</span><br><span class="line"><span class="keyword">added </span><span class="number">397</span> packages in <span class="number">34</span>.<span class="number">63</span>s</span><br><span class="line">INFO  Start <span class="keyword">blogging </span>with Hexo!</span><br><span class="line"></span><br><span class="line">$ npm <span class="keyword">install</span></span><br><span class="line"><span class="keyword"></span>......</span><br><span class="line">audited <span class="number">4704</span> packages in <span class="number">5</span>.<span class="number">315</span>s</span><br><span class="line">found <span class="number">0</span> vulnerabilities</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、基本配置"><a href="#2、基本配置" class="headerlink" title="2、基本配置"></a>2、基本配置</h3><p>打开 <strong>根目录</strong> 下的 <code>_config.yml</code> 文件，它是一个配置文件，可以直接用记事本打开</p>
-<p>下面介绍几个比较重要配置，完整的网站配置可以参考我的另一篇文章 —— <a href="https://www.cnblogs.com/wsmrzx/p/9439393.html">Hexo系列(二) 配置文件详解</a></p>
-<p>注意在设置时，属性与值之间需要留有一个空格，例如：<code>language: zh-CN</code></p>
-<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="meta">#Site 网站相关配置</span></span><br><span class="line">title	        网站标题</span><br><span class="line">subtitle	    网站副标题</span><br><span class="line">description	    网站描述</span><br><span class="line">keywords        网站关键词</span><br><span class="line">author	        网站作者名字</span><br><span class="line">language	    网站使用的语言，这里填<span class="built_in">zh</span>-CN</span><br><span class="line">timezone	    网站使用的时区，这里默认使用电脑的时区</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、测试"><a href="#3、测试" class="headerlink" title="3、测试"></a>3、测试</h3><p>至此，利用 Hexo 搭建的个人博客网站已经可以在本地上正常运行了</p>
-<p>我们一起来看看效果吧，打开 git bash，输入命令 <code>hexo s</code> 启动本地站点</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo s</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
-
-<p>如果出现了这样的提示信息，即表示本地建站成功</p>
-<p>在浏览器地址栏中输入 <a href="http://localhost:4000/%EF%BC%8C">http://localhost:4000/，</a> 就可以看到站点在本地运行的结果了</p>
-<h2 id="四、Hexo-远端部署"><a href="#四、Hexo-远端部署" class="headerlink" title="四、Hexo 远端部署"></a>四、Hexo 远端部署</h2><p>我们知道，GitHub 是一个基于 git 的代码托管平台，是世界上最大的开源社区</p>
-<p>GitHub 提供了一项名为 GitHub Pages 的服务，它允许用户自定义项目首页替代默认的源码列表</p>
-<p>因此，GitHub Pages 可以被认为是由用户编写的、托管在 GitHub 上的静态网页</p>
-<p>而我们的目的，正是要把用 Hexo 在本地搭建的网站部署到 Github 上，使得站点可以被公共访问</p>
-<h3 id="1、注册-Github-账号"><a href="#1、注册-Github-账号" class="headerlink" title="1、注册 Github 账号"></a>1、注册 Github 账号</h3><p>登陆 <a href="https://github.com/">GitHub官网</a> ，按要求填写好自己的个人信息（包括用户名，邮箱，密码等），然后进行邮箱验证后就注册好 GitHub 账号了，十分方便快捷</p>
-<p>完成之后还需要在本地配置一下自己的个人信息，打开 git bash 窗口，输入以下的命令即可</p>
-<p>（注意要将 your_name 和 your_email 替换成自己的信息）</p>
-<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">config</span> <span class="comment">--global user.name your_name</span></span><br><span class="line">$ git <span class="built_in">config</span> <span class="comment">--global user.email your_email</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2、创建-GitHub-仓库"><a href="#2、创建-GitHub-仓库" class="headerlink" title="2、创建 GitHub 仓库"></a>2、创建 GitHub 仓库</h3><p>打开 GitHub 官网的个人首页，点击 <code>New repository</code> 新建仓库，并按以下说明填写仓库信息：</p>
-<p>Repository name 的格式为 <code>username.github.io</code>，其中，username 是自己的 GitHub 名称</p>
-<p>另外，建议勾选 <code>Initialize this repository with a README</code> 选项，生成 README.md 文件</p>
-<p>最后点击 <code>Create repository</code>，创建仓库</p>
-<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185633866-2038271271.png" alt="img"></p>
-<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185641009-797032936.png" alt="img"></p>
-<p>此时打开 <code>Settings</code> 就可以看到自己的个人网站已经生成，网址为 <a href="https://username.github.io/">https://username.github.io</a></p>
-<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185648866-1837510865.png" alt="img"></p>
-<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185655901-961163475.png" alt="img"></p>
-<h3 id="3、安装插件"><a href="#3、安装插件" class="headerlink" title="3、安装插件"></a>3、安装插件</h3><p>进入站点根文件夹，打开 git bash 输入 <code>npm install hexo-deployer-git --save</code> 命令安装插件</p>
-<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4、修改配置"><a href="#4、修改配置" class="headerlink" title="4、修改配置"></a>4、修改配置</h3><p>打开根文件夹下的 <code>_config.yml</code> 配置文件，进行如下配置</p>
-<p>（注意要将 username 替换成自己的名字，并且在属性与值之间留一个空格）</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/username/username.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="5、配置-SSH"><a href="#5、配置-SSH" class="headerlink" title="5、配置 SSH"></a>5、配置 SSH</h3><p>进入站点根文件夹，打开 git bash，输入 <code>ssh-keygen -t rsa -C &quot;your_email&quot;</code> 命令并一路回车获得密钥</p>
-<p>（注意将 your_email 替换成自己的邮箱地址）</p>
-<p>完成后，根据提示信息中的文件地址 <code>/c/Users/user/.ssh/id_rsa.pub</code> 找到 id_rsa.pub 文件，复制文件里面的内容</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa  -C <span class="string">&quot;your_email&quot;</span></span><br><span class="line"></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/c/Users/user/.ssh/id_rsa): &lt;Enter&gt;</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase): &lt;Enter&gt;</span><br><span class="line">Enter same passphrase again: &lt;Enter&gt;</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> /c/Users/user/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /c/Users/user/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:0Is/n+PgAf+mUEhFgTx+nVyJRZ4Pk/nqj3YOnVOAQmE email_address</span><br><span class="line">The key<span class="string">&#x27;s randomart image is:</span></span><br><span class="line"><span class="string">+---[RSA 2048]----+</span></span><br><span class="line"><span class="string">|     . o+.E=o.   |</span></span><br><span class="line"><span class="string">|      +o o..o=   |</span></span><br><span class="line"><span class="string">|     .o..o.oO .  |</span></span><br><span class="line"><span class="string">|     ..+..+. = . |</span></span><br><span class="line"><span class="string">|      +.S     o .|</span></span><br><span class="line"><span class="string">|       =     o o |</span></span><br><span class="line"><span class="string">|      . *   o +  |</span></span><br><span class="line"><span class="string">|       o *oo.o.. |</span></span><br><span class="line"><span class="string">|        o+=oo+o  |</span></span><br><span class="line"><span class="string">+----[SHA256]-----+</span></span><br></pre></td></tr></table></figure>
-
-<p>登录 Github，打开 <code>Settings</code></p>
-<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185710025-303227338.png" alt="img"></p>
-<p>选择 <code>SSH and GPG keys</code>，选择 <code>New SSh Key</code></p>
-<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185716634-1463602157.png" alt="img"></p>
-<p>将复制的内容添加到 Key 中， Title 可以自己设定，最后点击 <code>Add SSH Key</code> 即可</p>
-<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185723763-1206751241.png" alt="img"></p>
-<p>最后，回到站点根文件夹，打开 git bash，输入 <code>ssh -T git@github.com</code> 命令验证是否添加成功</p>
-<figure class="highlight vhdl"><table><tr><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line"></span><br><span class="line">The authenticity <span class="keyword">of</span> host <span class="symbol">&#x27;github</span>.com (<span class="number">13.250</span>.<span class="number">177.223</span>)&#x27; can<span class="symbol">&#x27;t</span> be established.</span><br><span class="line">RSA key fingerprint <span class="keyword">is</span> SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.</span><br><span class="line">Are you sure you want <span class="keyword">to</span> continue connecting (yes/no)? &lt;yes&gt; &lt;Enter&gt;</span><br><span class="line"><span class="literal">Warning</span>: Permanently added <span class="symbol">&#x27;github</span>.com,<span class="number">13.250</span>.<span class="number">177.223</span>&#x27; (RSA) <span class="keyword">to</span> the list <span class="keyword">of</span> known hosts.</span><br><span class="line">Hi Forwhfang! You<span class="symbol">&#x27;ve</span> successfully authenticated, but GitHub does <span class="keyword">not</span> provide shell <span class="keyword">access</span>.</span><br></pre></td></tr></table></figure>
-
-<h3 id="6、发布网页"><a href="#6、发布网页" class="headerlink" title="6、发布网页"></a>6、发布网页</h3><p>git bash 中输入命令 <code>hexo g</code> 生成静态文件，输入命令 <code>hexo d</code> 部署到 Github</p>
-<p>此时，打开 <a href="https://username.github.io/">https://username.github.io</a> 就可以看见已经部署好的网站了，大功告成！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hexo系列-撰写文章</title>
-    <url>/2024/05/15/Hexo-Writing/</url>
-    <content><![CDATA[<h1 id="一、创建文章"><a href="#一、创建文章" class="headerlink" title="一、创建文章"></a>一、创建文章</h1><p>在站点文件中打开git bash，输入如下命令创建文章，其中title为文章的标题</p>
-<p><code>$ hexo new &quot;title&quot;</code></p>
-<p>当输入命令后，就会在 <code>source/_post</code> 文件夹下创建一个文件，命名为 <code>title.md</code></p>
-<p>这个文件就是将要发布到网站上的原始文件，用于记录文章内容</p>
-<p>下面，我们将要在这个文件中写下我们的第一篇博客</p>
-<h1 id="二、编写文章（基于Markdown）"><a href="#二、编写文章（基于Markdown）" class="headerlink" title="二、编写文章（基于Markdown）"></a>二、编写文章（基于Markdown）</h1><h2 id="1、Markdown简介"><a href="#1、Markdown简介" class="headerlink" title="1、Markdown简介"></a>1、Markdown简介</h2><blockquote>
-<p>Markdown是一种可以使用普通文本编辑器编写的<strong>标记语言</strong>，通过简单的<strong>标记语法</strong>，它可以使普通文本内容具有一定的格式</p>
-</blockquote>
-<p>基于Markdown语法的简洁性，它已经成为目前世界上最流行的用于书写博客的语言</p>
-<h2 id="2、Markdown语法"><a href="#2、Markdown语法" class="headerlink" title="2、Markdown语法"></a>2、Markdown语法</h2><p>推荐一款简洁易用的的Markdown编辑器 —— Typora</p>
-<p>简单而强大，不仅支持原生的语法，也支持对应的快捷键，更重要的是它还可以实时预览</p>
-<p>附上Typora的下载地址：<a href="https://www.typora.io/">https://www.typora.io/</a></p>
-<p>下面介绍一些常用的Markdown语法</p>
-<h3 id="（1）标题"><a href="#（1）标题" class="headerlink" title="（1）标题"></a>（1）标题</h3><h4 id="Markdown语法："><a href="#Markdown语法：" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
-<p>#一级标题</p>
-<p>##二级标题</p>
-<p>###三级标题</p>
-<p>####四级标题</p>
-<p>#####五级标题</p>
-<p>######六级标题</p>
-</blockquote>
-<h4 id="Typora快捷键："><a href="#Typora快捷键：" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + 1：一级标题</p>
-<p>Ctrl + 2：二级标题</p>
-<p>Ctrl + 3：三级标题</p>
-<p>Ctrl + 4：四级标题</p>
-<p>Ctrl + 5：五级标题</p>
-<p>Ctrl +6：六级标题</p>
-<p>Ctrl + 0：段落</p>
-<h3 id="（2）-粗体、斜体、删除线和下划线"><a href="#（2）-粗体、斜体、删除线和下划线" class="headerlink" title="（2） 粗体、斜体、删除线和下划线"></a>（2） 粗体、斜体、删除线和下划线</h3><h4 id="Markdown语法：-1"><a href="#Markdown语法：-1" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
-<p><code>*斜体*</code></p>
-<p><code>**粗体**</code></p>
-<p><code>***加粗斜体***</code></p>
-<p><code>~~删除线~~</code></p>
-</blockquote>
-<h4 id="Typora快捷键：-1"><a href="#Typora快捷键：-1" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + L：斜体</p>
-<p>Ctrl + B：粗体</p>
-<p>Ctrl + U：加粗斜体</p>
-<p>Alt + Ctrl + 5：删除线</p>
-<h3 id="（3）引用块："><a href="#（3）引用块：" class="headerlink" title="（3）引用块："></a>（3）引用块：</h3><h5 id="Markdown语法：-2"><a href="#Markdown语法：-2" class="headerlink" title="Markdown语法："></a>Markdown语法：</h5><blockquote>
-<p><code>&gt; 文字引用</code></p>
-</blockquote>
-<h4 id="Typora快捷键：-2"><a href="#Typora快捷键：-2" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + Shift + Q</p>
-<h3 id="（4）代码块"><a href="#（4）代码块" class="headerlink" title="（4）代码块"></a>（4）代码块</h3><h4 id="Markdown语法：-3"><a href="#Markdown语法：-3" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
-<p>`行内代码&#96;</p>
-<p>`&#96;&#96;</p>
-<p>多行代码<br>多行代码</p>
-<p>`&#96;&#96;</p>
-</blockquote>
-<h4 id="Typora快捷键：-3"><a href="#Typora快捷键：-3" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>行内代码：Ctrl + Shift + &#96;</p>
-<p>多行代码：Ctrl + Shift + K</p>
-<h3 id="（5）公式块"><a href="#（5）公式块" class="headerlink" title="（5）公式块"></a>（5）公式块</h3><h4 id="Markdown语法：-4"><a href="#Markdown语法：-4" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
-<p>$$</p>
-<p>数学公式</p>
-<p>$$</p>
-</blockquote>
-<h4 id="Typora快捷键：-4"><a href="#Typora快捷键：-4" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + Shift + M</p>
-<h3 id="（6）分割线"><a href="#（6）分割线" class="headerlink" title="（6）分割线"></a>（6）分割线</h3><h4 id="Markdown语法：-5"><a href="#Markdown语法：-5" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
-<p>方法一：—<br>方法二：+++<br>方法三：***</p>
-</blockquote>
-<h3 id="（7）列表"><a href="#（7）列表" class="headerlink" title="（7）列表"></a>（7）列表</h3><h4 id="Markdown语法：-6"><a href="#Markdown语法：-6" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
-<p>1.有序列表项</p>
-<p>* 无序列表项</p>
-<p>+ 无序列表项<br>-  无序列表项</p>
-</blockquote>
-<h4 id="Typora快捷键：-5"><a href="#Typora快捷键：-5" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>有序列表项：Ctrl + Shift + [</p>
-<p>无序列表项：Ctrl + Shift + ]</p>
-<h3 id="（8）表格"><a href="#（8）表格" class="headerlink" title="（8）表格"></a>（8）表格</h3><h4 id="Markdown语法：-7"><a href="#Markdown语法：-7" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
-<p>表头1|表头2</p>
-<p>-|-|-</p>
-<p>内容11|内容12</p>
-<p>内容21|内容22</p>
-</blockquote>
-<h4 id="Typora快捷键：-6"><a href="#Typora快捷键：-6" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + T</p>
-<h3 id="（9）超链接"><a href="#（9）超链接" class="headerlink" title="（9）超链接"></a>（9）超链接</h3><h4 id="Markdown语法：-8"><a href="#Markdown语法：-8" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
-<p>方法一：[链接文字] (链接地址 &quot;链接描述”)<br>例如：[示例链接]  (<a href="https://wwww.example.com/">https://wwww.example.com/</a>  &quot;示例链接”)</p>
-<p>方法二：&lt;链接地址&gt;<br>例如：&lt;<a href="https://www.example.com/%3E">https://www.example.com/&gt;</a></p>
-</blockquote>
-<h4 id="Typora快捷键：-7"><a href="#Typora快捷键：-7" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + K</p>
-<h3 id="（10）图片"><a href="#（10）图片" class="headerlink" title="（10）图片"></a>（10）图片</h3><h4 id="Markdown语法：-9"><a href="#Markdown语法：-9" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
-<p>![图片文字] (图片地址 &quot;图片描述”)<br>例如： ![示例图片]<br>(<a href="https://www.example.com/example.PNG">https://www.example.com/example.PNG</a> &quot;示例图片”)</p>
-</blockquote>
-<h4 id="Typora快捷键：-8"><a href="#Typora快捷键：-8" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + Shift + L</p>
-<p>说明：在Hexo中插入图片时，请按照以下的步骤进行设置</p>
-<p>1.将 <strong>站点配置文件中</strong> 的 <code>post_asset_folder</code> 选项的值设置为true</p>
-<p>2.在站点文件夹中打开 git bash，输入命令	<code>npm install hexo-asset-image --save</code>	安装插件</p>
-<p>3.这样，当使用	<code>hexo new title</code>	创建文章时，将同时在	<code>source/_post</code>	文件夹中生成一个与title同名的文件夹，我们只需将图片放进此文件夹中，然后在文章中通过 Markdown 语法进行引用即可</p>
-<p>例如，在资源文件夹（就是那个与title同名的文件夹）中添加图片 <code>example.PNG</code>，则可以在对应的文章中使用语句	<code>![示例图片] (title/example.PNG &quot;示例图片&quot;)</code>	添加图片</p>
-<h2 id="3、高级设置"><a href="#3、高级设置" class="headerlink" title="3、高级设置"></a>3、高级设置</h2><h3 id="（1）模版设置"><a href="#（1）模版设置" class="headerlink" title="（1）模版设置"></a>（1）模版设置</h3><p>当我们使用命令	<code>hexo new &quot;title&quot;</code>	创建文章时，hexo会根据	<code>/scaffolds/post.md</code>	对新文章进行初始化</p>
-<p>换言之，	<code>/sanffolds/post.md</code>	就是新文章的<strong>模版</strong>，所以我们可以修改它来适应自己的写作习惯</p>
-<p>一个简单的示例如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: &#123;&#123;title&#125;&#125;</span><br><span class="line">date: &#123;&#123;date&#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br></pre></td></tr></table></figure>
-
-<h3 id="（2）头部设置"><a href="#（2）头部设置" class="headerlink" title="（2）头部设置"></a>（2）头部设置</h3><p>在每篇利用hexo创建的文章的开头，都会有对文章进行说明的文字，叫做<strong>文章头部</strong></p>
-<p>文章的头部除了可以设置文章标题、发布日期等基础信息外，还可以为文章添加标签、分类等</p>
-<p>一个简单的实力如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">titile: Title</span><br><span class="line">date: YYYY-MM--DD HH:MM:SS</span><br><span class="line">tags: [tag1, tag2, ...]</span><br><span class="line">categories: category</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong>属性和属性值之间必须有一个空格，否则会解析错误</p>
-<h3 id="（3）首页显示"><a href="#（3）首页显示" class="headerlink" title="（3）首页显示"></a>（3）首页显示</h3><p>在利用hexo框架搭建的博客网站中，首页会显示文章的内容，且默认显示文章的全部内容</p>
-<p>如果当文章太长的时候就会显得十分冗余，所以我们有必要对其进行精简</p>
-<p>这时，我们只需在文章中使用	<code>&lt;!--more--&gt;</code>	标志即可，表示只会显示标志前面的内容</p>
-<h1 id="三、部署发布"><a href="#三、部署发布" class="headerlink" title="三、部署发布"></a>三、部署发布</h1><p>在站点文件夹中打开 git bash，输入如下命令部署和发布文章</p>
-<p><code>$ hexo g -d</code></p>
-<p><strong>建议：</strong>在使用	<code>hexo g</code>	部署之后，可以先使用	<code>hexo s</code>	运行本地站点，然后在浏览器输入地址	<a href="https://lacolhost:4000/">https://lacolhost:4000/</a>	查看运行结果，检查无误后再使用	<code>hexo d</code>	发布</p>
-]]></content>
-      <tags>
-        <tag>Hexo,Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo系列-配置文件详解</title>
     <url>/2024/05/16/Hexo-ConfigFile/</url>
     <content><![CDATA[<h1 id="Hexo系列-配置文件详解"><a href="#Hexo系列-配置文件详解" class="headerlink" title="Hexo系列-配置文件详解"></a>Hexo系列-配置文件详解</h1><p>Hexo 是一款优秀的博客框架，在使用 Hexo 搭建一个属于自己的博客网站后，我们还需要对其进行配置，使得 Hexo 更能满足自己的需求</p>
@@ -585,6 +379,212 @@
 ]]></content>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo系列 搭建博客网站</title>
+    <url>/2024/05/17/Hexo-Create-Blog/</url>
+    <content><![CDATA[<p><strong>写在前面的话</strong>：本系列文章主要参考 <a href="https://hexo.io/zh-cn/docs/index.html">Hexo官方说明文档</a>，同时结合自己在使用过程中的一些心得体会，撷取下来，和大家分享分享。好，下面闲话不多说，马上开始我们的 Hexo 之旅吧</p>
+<p><strong>温馨提醒</strong>：博主使用的操作系统是 Win10，其他操作系统可能会略有不同</p>
+<h2 id="一、Hexo-简介"><a href="#一、Hexo-简介" class="headerlink" title="一、Hexo 简介"></a>一、Hexo 简介</h2><p>Hexo 是什么呢？也许引用官方文档中的说明是再好不过了：</p>
+<blockquote>
+<p>Hexo 是一个快速、简洁且高效的 <strong>博客框架</strong>。它使用 Markdown（或其他渲染引擎）解析文章，在数秒内，即可使用靓丽的主题生成静态网页</p>
+</blockquote>
+<h2 id="二、Hexo-安装"><a href="#二、Hexo-安装" class="headerlink" title="二、Hexo 安装"></a>二、Hexo 安装</h2><h3 id="1、安装-Git"><a href="#1、安装-Git" class="headerlink" title="1、安装 Git"></a>1、安装 Git</h3><blockquote>
+<p>Git 是一个开源的分布式版本控制系统</p>
+</blockquote>
+<p>下载地址：<a href="https://git-scm.com/download%EF%BC%8C%E6%8C%89%E7%85%A7%E9%BB%98%E8%AE%A4%E5%82%BB%E7%93%9C%E5%BC%8F%E5%AE%89%E8%A3%85%E5%B0%B1%E5%A5%BD%E4%BA%86">https://git-scm.com/download，按照默认傻瓜式安装就好了</a></p>
+<p>补充一句，如果你已经安装了 Git，你可以通过 Git 本身获得最新的开发版本：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git <span class="built_in">clone</span> https://github.com/git/git</span></span><br></pre></td></tr></table></figure>
+
+<p>完成之后到桌面空白处单击鼠标右键，如果有出现 <code>Git Bash Here</code> 选项，则证明已经安装成功</p>
+<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185523288-1355703319.png" alt="img"></p>
+<h3 id="2、安装-Node-js"><a href="#2、安装-Node-js" class="headerlink" title="2、安装 Node.js"></a>2、安装 Node.js</h3><blockquote>
+<p>Node.js 是一个基于 Google V8 引擎的 JavaScript 环境，它支持在后端运行 JavaScript</p>
+<p>而 NPM 是默认与 Node.js 一起安装的包管理工具</p>
+</blockquote>
+<p>下载地址：<a href="https://nodejs.org/en%EF%BC%8C%E5%90%8C%E6%A0%B7%E6%98%AF%E6%8C%89%E7%85%A7%E9%BB%98%E8%AE%A4%E5%82%BB%E7%93%9C%E5%BC%8F%E5%AE%89%E8%A3%85%E5%B0%B1%E5%A5%BD%E4%BA%86">https://nodejs.org/en，同样是按照默认傻瓜式安装就好了</a></p>
+<p>完成之后到桌面空白处点击鼠标右键，选择 <code>Git Bash Here</code> 进入 bash 窗口</p>
+<p>输入 <code>node -v</code> 命令可查看 node 版本，输入 <code>npm -v</code> 命令可查看 npm 版本，用于验证安装是否成功</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>node -v</span><br><span class="line">v8.<span class="number">11.3</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$ </span>npm -v</span><br><span class="line"><span class="number">5.6</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3、下载-Hexo"><a href="#3、下载-Hexo" class="headerlink" title="3、下载 Hexo"></a>3、下载 Hexo</h3><p>在之前说过，NPM 是一个包管理工具，因此我们可以通过 NPM 工具下载 Hexo 框架</p>
+<p><code>npm install moduleName</code> 命令用于下载模块，其中 <code>-g</code> 参数表示在全局进行安装</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>npm install -g hexo</span><br></pre></td></tr></table></figure>
+
+<p>等待完成之后，输入命令 <code>hexo -v</code> 查看 Hexo 版本，验证安装是否成功</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">$ hexo -v</span><br><span class="line"><span class="section">hexo: 3.7.1</span></span><br><span class="line"><span class="section">hexo-cli: 1.1.0</span></span><br><span class="line"><span class="section">os: Windows_NT 10.0.16299 win32 x64</span></span><br><span class="line"><span class="section">http_parser: 2.8.0</span></span><br><span class="line"><span class="section">node: 8.11.3</span></span><br><span class="line"><span class="section">v8: 6.2.414.54</span></span><br><span class="line"><span class="section">uv: 1.19.1</span></span><br><span class="line"><span class="section">zlib: 1.2.11</span></span><br><span class="line"><span class="section">ares: 1.10.1-DEV</span></span><br><span class="line"><span class="section">modules: 57</span></span><br><span class="line"><span class="section">nghttp2: 1.32.0</span></span><br><span class="line"><span class="section">napi: 3</span></span><br><span class="line"><span class="section">openssl: 1.0.2o</span></span><br><span class="line"><span class="section">icu: 60.1</span></span><br><span class="line"><span class="section">unicode: 10.0</span></span><br><span class="line"><span class="section">cldr: 32.0</span></span><br><span class="line"><span class="section">tz: 2017c</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="三、Hexo-本地建站"><a href="#三、Hexo-本地建站" class="headerlink" title="三、Hexo 本地建站"></a>三、Hexo 本地建站</h2><h3 id="1、本地建站"><a href="#1、本地建站" class="headerlink" title="1、本地建站"></a>1、本地建站</h3><p>选择一个合适的位置创建一个文件夹，该文件夹将作为 Hexo 的根目录，用来储存本地文件</p>
+<p>进入该文件夹打开 git bash 窗口，输入命令 <code>hexo init</code> 和 <code>npm install</code></p>
+<p><code>hexo init</code> 命令可以将该文件夹初始化为 Hexo 根目录</p>
+<p><code>npm install</code> 命令可以自动安装依赖列表中列出的所有模块</p>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">$ hexo init</span><br><span class="line">INFO  <span class="keyword">Cloning </span>hexo-starter to file</span><br><span class="line">......</span><br><span class="line">INFO  <span class="keyword">Install </span>dependencies</span><br><span class="line">......</span><br><span class="line"><span class="keyword">added </span><span class="number">397</span> packages in <span class="number">34</span>.<span class="number">63</span>s</span><br><span class="line">INFO  Start <span class="keyword">blogging </span>with Hexo!</span><br><span class="line"></span><br><span class="line">$ npm <span class="keyword">install</span></span><br><span class="line"><span class="keyword"></span>......</span><br><span class="line">audited <span class="number">4704</span> packages in <span class="number">5</span>.<span class="number">315</span>s</span><br><span class="line">found <span class="number">0</span> vulnerabilities</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、基本配置"><a href="#2、基本配置" class="headerlink" title="2、基本配置"></a>2、基本配置</h3><p>打开 <strong>根目录</strong> 下的 <code>_config.yml</code> 文件，它是一个配置文件，可以直接用记事本打开</p>
+<p>下面介绍几个比较重要配置，完整的网站配置可以参考我的另一篇文章 —— <a href="https://www.cnblogs.com/wsmrzx/p/9439393.html">Hexo系列(二) 配置文件详解</a></p>
+<p>注意在设置时，属性与值之间需要留有一个空格，例如：<code>language: zh-CN</code></p>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="meta">#Site 网站相关配置</span></span><br><span class="line">title	        网站标题</span><br><span class="line">subtitle	    网站副标题</span><br><span class="line">description	    网站描述</span><br><span class="line">keywords        网站关键词</span><br><span class="line">author	        网站作者名字</span><br><span class="line">language	    网站使用的语言，这里填<span class="built_in">zh</span>-CN</span><br><span class="line">timezone	    网站使用的时区，这里默认使用电脑的时区</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、测试"><a href="#3、测试" class="headerlink" title="3、测试"></a>3、测试</h3><p>至此，利用 Hexo 搭建的个人博客网站已经可以在本地上正常运行了</p>
+<p>我们一起来看看效果吧，打开 git bash，输入命令 <code>hexo s</code> 启动本地站点</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo s</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
+
+<p>如果出现了这样的提示信息，即表示本地建站成功</p>
+<p>在浏览器地址栏中输入 <a href="http://localhost:4000/%EF%BC%8C">http://localhost:4000/，</a> 就可以看到站点在本地运行的结果了</p>
+<h2 id="四、Hexo-远端部署"><a href="#四、Hexo-远端部署" class="headerlink" title="四、Hexo 远端部署"></a>四、Hexo 远端部署</h2><p>我们知道，GitHub 是一个基于 git 的代码托管平台，是世界上最大的开源社区</p>
+<p>GitHub 提供了一项名为 GitHub Pages 的服务，它允许用户自定义项目首页替代默认的源码列表</p>
+<p>因此，GitHub Pages 可以被认为是由用户编写的、托管在 GitHub 上的静态网页</p>
+<p>而我们的目的，正是要把用 Hexo 在本地搭建的网站部署到 Github 上，使得站点可以被公共访问</p>
+<h3 id="1、注册-Github-账号"><a href="#1、注册-Github-账号" class="headerlink" title="1、注册 Github 账号"></a>1、注册 Github 账号</h3><p>登陆 <a href="https://github.com/">GitHub官网</a> ，按要求填写好自己的个人信息（包括用户名，邮箱，密码等），然后进行邮箱验证后就注册好 GitHub 账号了，十分方便快捷</p>
+<p>完成之后还需要在本地配置一下自己的个人信息，打开 git bash 窗口，输入以下的命令即可</p>
+<p>（注意要将 your_name 和 your_email 替换成自己的信息）</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">config</span> <span class="comment">--global user.name your_name</span></span><br><span class="line">$ git <span class="built_in">config</span> <span class="comment">--global user.email your_email</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2、创建-GitHub-仓库"><a href="#2、创建-GitHub-仓库" class="headerlink" title="2、创建 GitHub 仓库"></a>2、创建 GitHub 仓库</h3><p>打开 GitHub 官网的个人首页，点击 <code>New repository</code> 新建仓库，并按以下说明填写仓库信息：</p>
+<p>Repository name 的格式为 <code>username.github.io</code>，其中，username 是自己的 GitHub 名称</p>
+<p>另外，建议勾选 <code>Initialize this repository with a README</code> 选项，生成 README.md 文件</p>
+<p>最后点击 <code>Create repository</code>，创建仓库</p>
+<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185633866-2038271271.png" alt="img"></p>
+<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185641009-797032936.png" alt="img"></p>
+<p>此时打开 <code>Settings</code> 就可以看到自己的个人网站已经生成，网址为 <a href="https://username.github.io/">https://username.github.io</a></p>
+<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185648866-1837510865.png" alt="img"></p>
+<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185655901-961163475.png" alt="img"></p>
+<h3 id="3、安装插件"><a href="#3、安装插件" class="headerlink" title="3、安装插件"></a>3、安装插件</h3><p>进入站点根文件夹，打开 git bash 输入 <code>npm install hexo-deployer-git --save</code> 命令安装插件</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4、修改配置"><a href="#4、修改配置" class="headerlink" title="4、修改配置"></a>4、修改配置</h3><p>打开根文件夹下的 <code>_config.yml</code> 配置文件，进行如下配置</p>
+<p>（注意要将 username 替换成自己的名字，并且在属性与值之间留一个空格）</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/username/username.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5、配置-SSH"><a href="#5、配置-SSH" class="headerlink" title="5、配置 SSH"></a>5、配置 SSH</h3><p>进入站点根文件夹，打开 git bash，输入 <code>ssh-keygen -t rsa -C &quot;your_email&quot;</code> 命令并一路回车获得密钥</p>
+<p>（注意将 your_email 替换成自己的邮箱地址）</p>
+<p>完成后，根据提示信息中的文件地址 <code>/c/Users/user/.ssh/id_rsa.pub</code> 找到 id_rsa.pub 文件，复制文件里面的内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa  -C <span class="string">&quot;your_email&quot;</span></span><br><span class="line"></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/c/Users/user/.ssh/id_rsa): &lt;Enter&gt;</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase): &lt;Enter&gt;</span><br><span class="line">Enter same passphrase again: &lt;Enter&gt;</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> /c/Users/user/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /c/Users/user/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:0Is/n+PgAf+mUEhFgTx+nVyJRZ4Pk/nqj3YOnVOAQmE email_address</span><br><span class="line">The key<span class="string">&#x27;s randomart image is:</span></span><br><span class="line"><span class="string">+---[RSA 2048]----+</span></span><br><span class="line"><span class="string">|     . o+.E=o.   |</span></span><br><span class="line"><span class="string">|      +o o..o=   |</span></span><br><span class="line"><span class="string">|     .o..o.oO .  |</span></span><br><span class="line"><span class="string">|     ..+..+. = . |</span></span><br><span class="line"><span class="string">|      +.S     o .|</span></span><br><span class="line"><span class="string">|       =     o o |</span></span><br><span class="line"><span class="string">|      . *   o +  |</span></span><br><span class="line"><span class="string">|       o *oo.o.. |</span></span><br><span class="line"><span class="string">|        o+=oo+o  |</span></span><br><span class="line"><span class="string">+----[SHA256]-----+</span></span><br></pre></td></tr></table></figure>
+
+<p>登录 Github，打开 <code>Settings</code></p>
+<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185710025-303227338.png" alt="img"></p>
+<p>选择 <code>SSH and GPG keys</code>，选择 <code>New SSh Key</code></p>
+<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185716634-1463602157.png" alt="img"></p>
+<p>将复制的内容添加到 Key 中， Title 可以自己设定，最后点击 <code>Add SSH Key</code> 即可</p>
+<p><img src="https://img2018.cnblogs.com/blog/1459925/201902/1459925-20190227185723763-1206751241.png" alt="img"></p>
+<p>最后，回到站点根文件夹，打开 git bash，输入 <code>ssh -T git@github.com</code> 命令验证是否添加成功</p>
+<figure class="highlight vhdl"><table><tr><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line"></span><br><span class="line">The authenticity <span class="keyword">of</span> host <span class="symbol">&#x27;github</span>.com (<span class="number">13.250</span>.<span class="number">177.223</span>)&#x27; can<span class="symbol">&#x27;t</span> be established.</span><br><span class="line">RSA key fingerprint <span class="keyword">is</span> SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.</span><br><span class="line">Are you sure you want <span class="keyword">to</span> continue connecting (yes/no)? &lt;yes&gt; &lt;Enter&gt;</span><br><span class="line"><span class="literal">Warning</span>: Permanently added <span class="symbol">&#x27;github</span>.com,<span class="number">13.250</span>.<span class="number">177.223</span>&#x27; (RSA) <span class="keyword">to</span> the list <span class="keyword">of</span> known hosts.</span><br><span class="line">Hi Forwhfang! You<span class="symbol">&#x27;ve</span> successfully authenticated, but GitHub does <span class="keyword">not</span> provide shell <span class="keyword">access</span>.</span><br></pre></td></tr></table></figure>
+
+<h3 id="6、发布网页"><a href="#6、发布网页" class="headerlink" title="6、发布网页"></a>6、发布网页</h3><p>git bash 中输入命令 <code>hexo g</code> 生成静态文件，输入命令 <code>hexo d</code> 部署到 Github</p>
+<p>此时，打开 <a href="https://username.github.io/">https://username.github.io</a> 就可以看见已经部署好的网站了，大功告成！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hexo系列-撰写文章</title>
+    <url>/2024/05/15/Hexo-Writing/</url>
+    <content><![CDATA[<h1 id="一、创建文章"><a href="#一、创建文章" class="headerlink" title="一、创建文章"></a>一、创建文章</h1><p>在站点文件中打开git bash，输入如下命令创建文章，其中title为文章的标题</p>
+<p><code>$ hexo new &quot;title&quot;</code></p>
+<p>当输入命令后，就会在 <code>source/_post</code> 文件夹下创建一个文件，命名为 <code>title.md</code></p>
+<p>这个文件就是将要发布到网站上的原始文件，用于记录文章内容</p>
+<p>下面，我们将要在这个文件中写下我们的第一篇博客</p>
+<h1 id="二、编写文章（基于Markdown）"><a href="#二、编写文章（基于Markdown）" class="headerlink" title="二、编写文章（基于Markdown）"></a>二、编写文章（基于Markdown）</h1><h2 id="1、Markdown简介"><a href="#1、Markdown简介" class="headerlink" title="1、Markdown简介"></a>1、Markdown简介</h2><blockquote>
+<p>Markdown是一种可以使用普通文本编辑器编写的<strong>标记语言</strong>，通过简单的<strong>标记语法</strong>，它可以使普通文本内容具有一定的格式</p>
+</blockquote>
+<p>基于Markdown语法的简洁性，它已经成为目前世界上最流行的用于书写博客的语言</p>
+<h2 id="2、Markdown语法"><a href="#2、Markdown语法" class="headerlink" title="2、Markdown语法"></a>2、Markdown语法</h2><p>推荐一款简洁易用的的Markdown编辑器 —— Typora</p>
+<p>简单而强大，不仅支持原生的语法，也支持对应的快捷键，更重要的是它还可以实时预览</p>
+<p>附上Typora的下载地址：<a href="https://www.typora.io/">https://www.typora.io/</a></p>
+<p>下面介绍一些常用的Markdown语法</p>
+<h3 id="（1）标题"><a href="#（1）标题" class="headerlink" title="（1）标题"></a>（1）标题</h3><h4 id="Markdown语法："><a href="#Markdown语法：" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
+<p>#一级标题</p>
+<p>##二级标题</p>
+<p>###三级标题</p>
+<p>####四级标题</p>
+<p>#####五级标题</p>
+<p>######六级标题</p>
+</blockquote>
+<h4 id="Typora快捷键："><a href="#Typora快捷键：" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + 1：一级标题</p>
+<p>Ctrl + 2：二级标题</p>
+<p>Ctrl + 3：三级标题</p>
+<p>Ctrl + 4：四级标题</p>
+<p>Ctrl + 5：五级标题</p>
+<p>Ctrl +6：六级标题</p>
+<p>Ctrl + 0：段落</p>
+<h3 id="（2）-粗体、斜体、删除线和下划线"><a href="#（2）-粗体、斜体、删除线和下划线" class="headerlink" title="（2） 粗体、斜体、删除线和下划线"></a>（2） 粗体、斜体、删除线和下划线</h3><h4 id="Markdown语法：-1"><a href="#Markdown语法：-1" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
+<p><code>*斜体*</code></p>
+<p><code>**粗体**</code></p>
+<p><code>***加粗斜体***</code></p>
+<p><code>~~删除线~~</code></p>
+</blockquote>
+<h4 id="Typora快捷键：-1"><a href="#Typora快捷键：-1" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + L：斜体</p>
+<p>Ctrl + B：粗体</p>
+<p>Ctrl + U：加粗斜体</p>
+<p>Alt + Ctrl + 5：删除线</p>
+<h3 id="（3）引用块："><a href="#（3）引用块：" class="headerlink" title="（3）引用块："></a>（3）引用块：</h3><h5 id="Markdown语法：-2"><a href="#Markdown语法：-2" class="headerlink" title="Markdown语法："></a>Markdown语法：</h5><blockquote>
+<p><code>&gt; 文字引用</code></p>
+</blockquote>
+<h4 id="Typora快捷键：-2"><a href="#Typora快捷键：-2" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + Shift + Q</p>
+<h3 id="（4）代码块"><a href="#（4）代码块" class="headerlink" title="（4）代码块"></a>（4）代码块</h3><h4 id="Markdown语法：-3"><a href="#Markdown语法：-3" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
+<p>`行内代码&#96;</p>
+<p>`&#96;&#96;</p>
+<p>多行代码<br>多行代码</p>
+<p>`&#96;&#96;</p>
+</blockquote>
+<h4 id="Typora快捷键：-3"><a href="#Typora快捷键：-3" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>行内代码：Ctrl + Shift + &#96;</p>
+<p>多行代码：Ctrl + Shift + K</p>
+<h3 id="（5）公式块"><a href="#（5）公式块" class="headerlink" title="（5）公式块"></a>（5）公式块</h3><h4 id="Markdown语法：-4"><a href="#Markdown语法：-4" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
+<p>$$</p>
+<p>数学公式</p>
+<p>$$</p>
+</blockquote>
+<h4 id="Typora快捷键：-4"><a href="#Typora快捷键：-4" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + Shift + M</p>
+<h3 id="（6）分割线"><a href="#（6）分割线" class="headerlink" title="（6）分割线"></a>（6）分割线</h3><h4 id="Markdown语法：-5"><a href="#Markdown语法：-5" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
+<p>方法一：—<br>方法二：+++<br>方法三：***</p>
+</blockquote>
+<h3 id="（7）列表"><a href="#（7）列表" class="headerlink" title="（7）列表"></a>（7）列表</h3><h4 id="Markdown语法：-6"><a href="#Markdown语法：-6" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
+<p>1.有序列表项</p>
+<p>* 无序列表项</p>
+<p>+ 无序列表项<br>-  无序列表项</p>
+</blockquote>
+<h4 id="Typora快捷键：-5"><a href="#Typora快捷键：-5" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>有序列表项：Ctrl + Shift + [</p>
+<p>无序列表项：Ctrl + Shift + ]</p>
+<h3 id="（8）表格"><a href="#（8）表格" class="headerlink" title="（8）表格"></a>（8）表格</h3><h4 id="Markdown语法：-7"><a href="#Markdown语法：-7" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
+<p>表头1|表头2</p>
+<p>-|-|-</p>
+<p>内容11|内容12</p>
+<p>内容21|内容22</p>
+</blockquote>
+<h4 id="Typora快捷键：-6"><a href="#Typora快捷键：-6" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + T</p>
+<h3 id="（9）超链接"><a href="#（9）超链接" class="headerlink" title="（9）超链接"></a>（9）超链接</h3><h4 id="Markdown语法：-8"><a href="#Markdown语法：-8" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
+<p>方法一：[链接文字] (链接地址 &quot;链接描述”)<br>例如：[示例链接]  (<a href="https://wwww.example.com/">https://wwww.example.com/</a>  &quot;示例链接”)</p>
+<p>方法二：&lt;链接地址&gt;<br>例如：&lt;<a href="https://www.example.com/%3E">https://www.example.com/&gt;</a></p>
+</blockquote>
+<h4 id="Typora快捷键：-7"><a href="#Typora快捷键：-7" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + K</p>
+<h3 id="（10）图片"><a href="#（10）图片" class="headerlink" title="（10）图片"></a>（10）图片</h3><h4 id="Markdown语法：-9"><a href="#Markdown语法：-9" class="headerlink" title="Markdown语法："></a>Markdown语法：</h4><blockquote>
+<p>![图片文字] (图片地址 &quot;图片描述”)<br>例如： ![示例图片]<br>(<a href="https://www.example.com/example.PNG">https://www.example.com/example.PNG</a> &quot;示例图片”)</p>
+</blockquote>
+<h4 id="Typora快捷键：-8"><a href="#Typora快捷键：-8" class="headerlink" title="Typora快捷键："></a>Typora快捷键：</h4><p>Ctrl + Shift + L</p>
+<p>说明：在Hexo中插入图片时，请按照以下的步骤进行设置</p>
+<p>1.将 <strong>站点配置文件中</strong> 的 <code>post_asset_folder</code> 选项的值设置为true</p>
+<p>2.在站点文件夹中打开 git bash，输入命令	<code>npm install hexo-asset-image --save</code>	安装插件</p>
+<p>3.这样，当使用	<code>hexo new title</code>	创建文章时，将同时在	<code>source/_post</code>	文件夹中生成一个与title同名的文件夹，我们只需将图片放进此文件夹中，然后在文章中通过 Markdown 语法进行引用即可</p>
+<p>例如，在资源文件夹（就是那个与title同名的文件夹）中添加图片 <code>example.PNG</code>，则可以在对应的文章中使用语句	<code>![示例图片] (title/example.PNG &quot;示例图片&quot;)</code>	添加图片</p>
+<h2 id="3、高级设置"><a href="#3、高级设置" class="headerlink" title="3、高级设置"></a>3、高级设置</h2><h3 id="（1）模版设置"><a href="#（1）模版设置" class="headerlink" title="（1）模版设置"></a>（1）模版设置</h3><p>当我们使用命令	<code>hexo new &quot;title&quot;</code>	创建文章时，hexo会根据	<code>/scaffolds/post.md</code>	对新文章进行初始化</p>
+<p>换言之，	<code>/sanffolds/post.md</code>	就是新文章的<strong>模版</strong>，所以我们可以修改它来适应自己的写作习惯</p>
+<p>一个简单的示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: &#123;&#123;title&#125;&#125;</span><br><span class="line">date: &#123;&#123;date&#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br></pre></td></tr></table></figure>
+
+<h3 id="（2）头部设置"><a href="#（2）头部设置" class="headerlink" title="（2）头部设置"></a>（2）头部设置</h3><p>在每篇利用hexo创建的文章的开头，都会有对文章进行说明的文字，叫做<strong>文章头部</strong></p>
+<p>文章的头部除了可以设置文章标题、发布日期等基础信息外，还可以为文章添加标签、分类等</p>
+<p>一个简单的实力如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">titile: Title</span><br><span class="line">date: YYYY-MM--DD HH:MM:SS</span><br><span class="line">tags: [tag1, tag2, ...]</span><br><span class="line">categories: category</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong>属性和属性值之间必须有一个空格，否则会解析错误</p>
+<h3 id="（3）首页显示"><a href="#（3）首页显示" class="headerlink" title="（3）首页显示"></a>（3）首页显示</h3><p>在利用hexo框架搭建的博客网站中，首页会显示文章的内容，且默认显示文章的全部内容</p>
+<p>如果当文章太长的时候就会显得十分冗余，所以我们有必要对其进行精简</p>
+<p>这时，我们只需在文章中使用	<code>&lt;!--more--&gt;</code>	标志即可，表示只会显示标志前面的内容</p>
+<h1 id="三、部署发布"><a href="#三、部署发布" class="headerlink" title="三、部署发布"></a>三、部署发布</h1><p>在站点文件夹中打开 git bash，输入如下命令部署和发布文章</p>
+<p><code>$ hexo g -d</code></p>
+<p><strong>建议：</strong>在使用	<code>hexo g</code>	部署之后，可以先使用	<code>hexo s</code>	运行本地站点，然后在浏览器输入地址	<a href="https://lacolhost:4000/">https://lacolhost:4000/</a>	查看运行结果，检查无误后再使用	<code>hexo d</code>	发布</p>
+]]></content>
+      <tags>
+        <tag>Hexo,Markdown</tag>
       </tags>
   </entry>
   <entry>
