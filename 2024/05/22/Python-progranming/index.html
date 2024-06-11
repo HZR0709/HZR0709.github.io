@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: Hexo | 个人博客</title>
+  <title>Python 学习笔记 | 个人博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="心有所向，无问东西">
-<meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://example.com/tags/Hexo/index.html">
+  <meta name="description" content="1. Python 基础 1.1 了解Python  Python简介 安装Python和IDE（如VSCode、PyCharm）  1.2 基本语法  变量和数据类型 基本输入和输出 基本运算符  # 变量和数据类型a &#x3D; 10        # 整数b &#x3D; 3.14      # 浮点数c &#x3D; &#x27;Hello&#x27;   # 字符串d &#x3D; True      # 布尔值e &#x3D; No">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 学习笔记">
+<meta property="og:url" content="http://example.com/2024/05/22/Python-progranming/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="心有所向，无问东西">
+<meta property="og:description" content="1. Python 基础 1.1 了解Python  Python简介 安装Python和IDE（如VSCode、PyCharm）  1.2 基本语法  变量和数据类型 基本输入和输出 基本运算符  # 变量和数据类型a &#x3D; 10        # 整数b &#x3D; 3.14      # 浮点数c &#x3D; &#x27;Hello&#x27;   # 字符串d &#x3D; True      # 布尔值e &#x3D; No">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-22T12:17:49.000Z">
+<meta property="article:modified_time" content="2024-05-22T13:03:38.978Z">
 <meta property="article:author" content="hzr">
-<meta property="article:tag" content="hzr">
+<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
@@ -224,65 +226,448 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Python-progranming" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/05/16/Hexo-ConfigFile/" class="archive-article-date">
-        <time datetime="2024-05-15T17:02:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-16</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/05/16/Hexo-ConfigFile/" target="_blank">Hexo系列-配置文件详解</a>
   
+    <h1 class="article-title" itemprop="name">
+      Python 学习笔记
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2024/05/22/Python-progranming/" class="archive-article-date">
+        <time datetime="2024-05-22T12:17:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-22</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">3.2k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">16分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1>1. Python 基础</h1>
+<h2 id="1-1-了解Python">1.1 了解Python</h2>
+<ul>
+<li>Python简介</li>
+<li>安装Python和IDE（如VSCode、PyCharm）</li>
+</ul>
+<h2 id="1-2-基本语法">1.2 基本语法</h2>
+<ul>
+<li>变量和数据类型</li>
+<li>基本输入和输出</li>
+<li>基本运算符</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 变量和数据类型</span></span><br><span class="line">a = <span class="number">10</span>        <span class="comment"># 整数</span></span><br><span class="line">b = <span class="number">3.14</span>      <span class="comment"># 浮点数</span></span><br><span class="line">c = <span class="string">&#x27;Hello&#x27;</span>   <span class="comment"># 字符串</span></span><br><span class="line">d = <span class="literal">True</span>      <span class="comment"># 布尔值</span></span><br><span class="line">e = <span class="literal">None</span>      <span class="comment"># 空值</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 基本输入和输出</span></span><br><span class="line">name = <span class="built_in">input</span>(<span class="string">&quot;Enter your name: &quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Hello, <span class="subst">&#123;name&#125;</span>!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基本运算符</span></span><br><span class="line">x = <span class="number">10</span> + <span class="number">3</span></span><br><span class="line">y = <span class="number">10</span> - <span class="number">3</span></span><br><span class="line">z = <span class="number">10</span> * <span class="number">3</span></span><br><span class="line">w = <span class="number">10</span> / <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-3-控制结构">1.3 控制结构</h2>
+<ul>
+<li>条件语句（if, elif, else）</li>
+<li>循环语句（for, while）</li>
+<li>列表推导式</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 条件语句</span></span><br><span class="line">x = <span class="number">10</span></span><br><span class="line"><span class="keyword">if</span> x &gt; <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x is positive&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> x == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x is zero&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x is negative&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 循环语句</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> count &lt; <span class="number">5</span>:</span><br><span class="line">    <span class="built_in">print</span>(count)</span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表推导式</span></span><br><span class="line">squares = [x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)]</span><br></pre></td></tr></table></figure>
+<h2 id="1-4-数据结构">1.4 数据结构</h2>
+<ul>
+<li>列表</li>
+<li>元组</li>
+<li>字典</li>
+<li>集合</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列表</span></span><br><span class="line">my_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 元组</span></span><br><span class="line">my_tuple = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 字典</span></span><br><span class="line">my_dict = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Alice&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">25</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 集合</span></span><br><span class="line">my_set = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-5-字符串处理">1.5 字符串处理</h2>
+<ul>
+<li>字符串操作</li>
+<li>字符串方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = <span class="string">&quot;hello world&quot;</span></span><br><span class="line"><span class="built_in">print</span>(s.upper())     <span class="comment"># 转为大写</span></span><br><span class="line"><span class="built_in">print</span>(s.capitalize()) <span class="comment"># 首字母大写</span></span><br><span class="line"><span class="built_in">print</span>(s.replace(<span class="string">&quot;world&quot;</span>, <span class="string">&quot;Python&quot;</span>)) <span class="comment"># 替换子串</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-6-文件操作">1.6 文件操作</h2>
+<ul>
+<li>读写文件</li>
+<li>文件方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 写文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;example.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.write(<span class="string">&quot;Hello, world!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;example.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    content = file.read()</span><br><span class="line">    <span class="built_in">print</span>(content)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 追加写文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;example.txt&#x27;</span>, <span class="string">&#x27;a&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.write(<span class="string">&quot;\nAppended text.&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="1-7-异常处理">1.7 异常处理</h2>
+<ul>
+<li>try-except 语句</li>
+<li>异常类型</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    result = <span class="number">10</span> / <span class="number">0</span></span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;You can&#x27;t divide by zero!&quot;</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;An error occurred: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;This will always be executed&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h1>2. 函数和模块</h1>
+<h2 id="2-1-函数">2.1 函数</h2>
+<ul>
+<li>定义函数</li>
+<li>函数参数</li>
+<li>返回值</li>
+<li>高阶函数和匿名函数（lambda）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">greet</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;Hello, <span class="subst">&#123;name&#125;</span>!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(greet(<span class="string">&quot;Alice&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 高阶函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">apply_func</span>(<span class="params">x, func</span>):</span><br><span class="line">    <span class="keyword">return</span> func(x)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(apply_func(<span class="number">5</span>, <span class="keyword">lambda</span> x: x**<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-模块和包">2.2 模块和包</h2>
+<ul>
+<li>创建和导入模块</li>
+<li>标准库模块</li>
+<li>第三方库的安装和使用（如pip）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建一个模块 my_module.py</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">greet</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;Hello, <span class="subst">&#123;name&#125;</span>!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在另一个脚本中导入模块</span></span><br><span class="line"><span class="keyword">import</span> my_module</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(my_module.greet(<span class="string">&quot;Alice&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用标准库</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="built_in">print</span>(math.sqrt(<span class="number">16</span>))</span><br></pre></td></tr></table></figure>
+<h1>3. 面向对象编程</h1>
+<h2 id="3-1-类和对象">3.1 类和对象</h2>
+<ul>
+<li>定义类和对象</li>
+<li>属性和方法</li>
+<li>类的继承和多态</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">bark</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;<span class="subst">&#123;self.name&#125;</span> is barking&quot;</span></span><br><span class="line"></span><br><span class="line">dog1 = Dog(<span class="string">&quot;Buddy&quot;</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(dog1.bark())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 类的继承</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">speak</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError(<span class="string">&quot;Subclasses must implement this method&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>(<span class="title class_ inherited__">Animal</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">speak</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;<span class="subst">&#123;self.name&#125;</span> says woof!&quot;</span></span><br><span class="line"></span><br><span class="line">dog = Dog(<span class="string">&quot;Buddy&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(dog.speak())</span><br></pre></td></tr></table></figure>
+<h1>4. 进阶主题</h1>
+<h2 id="4-1-装饰器">4.1 装饰器</h2>
+<ul>
+<li>定义装饰器</li>
+<li>使用装饰器</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">my_decorator</span>(<span class="params">func</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Something is happening before the function is called.&quot;</span>)</span><br><span class="line">        func()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Something is happening after the function is called.&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="meta">@my_decorator</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Hello!&quot;</span>)</span><br><span class="line"></span><br><span class="line">say_hello()</span><br></pre></td></tr></table></figure>
+<h2 id="4-2-生成器">4.2 生成器</h2>
+<ul>
+<li>定义生成器</li>
+<li>使用生成器</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">my_generator</span>():</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">        <span class="keyword">yield</span> i</span><br><span class="line"></span><br><span class="line">gen = my_generator()</span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> gen:</span><br><span class="line">    <span class="built_in">print</span>(value)</span><br></pre></td></tr></table></figure>
+<h2 id="4-3-迭代器">4.3 迭代器</h2>
+<ul>
+<li>定义迭代器</li>
+<li>使用迭代器</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyIterator</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, <span class="built_in">max</span></span>):</span><br><span class="line">        self.<span class="built_in">max</span> = <span class="built_in">max</span></span><br><span class="line">        self.current = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__iter__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__next__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> self.current &lt; self.<span class="built_in">max</span>:</span><br><span class="line">            self.current += <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> self.current</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> StopIteration</span><br><span class="line"></span><br><span class="line">my_iter = MyIterator(<span class="number">5</span>)</span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> my_iter:</span><br><span class="line">    <span class="built_in">print</span>(num)</span><br></pre></td></tr></table></figure>
+<h1>5. 数据分析和科学计算</h1>
+<h2 id="5-1-NumPy">5.1 NumPy</h2>
+<ul>
+<li>数组操作</li>
+<li>数学运算</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">arr = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(arr.mean())  <span class="comment"># 计算均值</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-2-Pandas">5.2 Pandas</h2>
+<ul>
+<li>数据处理</li>
+<li>数据分析</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = &#123;<span class="string">&#x27;name&#x27;</span>: [<span class="string">&#x27;Alice&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>], <span class="string">&#x27;age&#x27;</span>: [<span class="number">25</span>, <span class="number">30</span>]&#125;</span><br><span class="line">df = pd.DataFrame(data)</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+<h2 id="5-3-Matplotlib">5.3 Matplotlib</h2>
+<ul>
+<li>数据可视化</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">x = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">y = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>]</span><br><span class="line"></span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;y&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Simple Plot&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h1>6. Web开发</h1>
+<h2 id="6-1-Flask">6.1 Flask</h2>
+<ul>
+<li>创建简单的Web应用</li>
+<li>路由和视图函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello, World!&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="6-2-Django">6.2 Django</h2>
+<ul>
+<li>创建项目和应用</li>
+<li>URL路由和视图</li>
+<li>模板和静态文件</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建Django项目和应用</span></span><br><span class="line">django-admin startproject myproject</span><br><span class="line">cd myproject</span><br><span class="line">python manage.py startapp myapp</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在 myapp/views.py 中定义视图</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;Hello, World!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在 myproject/urls.py 中配置URL路由</span></span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> myapp <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;&#x27;</span>, views.hello_world),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h1>7. 数据库</h1>
+<h2 id="7-1-SQLite">7.1 SQLite</h2>
+<ul>
+<li>数据库连接</li>
+<li>CRUD操作</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接数据库</span></span><br><span class="line">conn = sqlite3.connect(<span class="string">&#x27;example.db&#x27;</span>)</span><br><span class="line">c = conn.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建表</span></span><br><span class="line">c.execute(<span class="string">&#x27;&#x27;&#x27;CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT)&#x27;&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 插入数据</span></span><br><span class="line">c.execute(<span class="string">&quot;INSERT INTO users (name) VALUES (&#x27;Alice&#x27;)&quot;</span>)</span><br><span class="line">c.execute(<span class="string">&quot;INSERT INTO users (name) VALUES (&#x27;Bob&#x27;)&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询数据</span></span><br><span class="line">c.execute(<span class="string">&quot;SELECT * FROM users&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(c.fetchall())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交事务</span></span><br><span class="line">conn.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭连接</span></span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+<h2 id="7-2-SQLAlchemy">7.2 SQLAlchemy</h2>
+<ul>
+<li>ORM操作</li>
+<li>模型定义</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine, Column, Integer, String</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.ext.declarative <span class="keyword">import</span> declarative_base</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> sessionmaker</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数据库引擎</span></span><br><span class="line">engine = create_engine(<span class="string">&#x27;sqlite:///example.db&#x27;</span>)</span><br><span class="line">Base = declarative_base()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义模型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(<span class="title class_ inherited__">Base</span>):</span><br><span class="line">    __tablename__ = <span class="string">&#x27;users&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = Column(Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = Column(String)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建表</span></span><br><span class="line">Base.metadata.create_all(engine)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建会话</span></span><br><span class="line">Session = sessionmaker(bind=engine)</span><br><span class="line">session = Session()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 插入数据</span></span><br><span class="line">new_user = User(name=<span class="string">&#x27;Alice&#x27;</span>)</span><br><span class="line">session.add(new_user)</span><br><span class="line">session.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询数据</span></span><br><span class="line">users = session.query(User).<span class="built_in">all</span>()</span><br><span class="line"><span class="keyword">for</span> user <span class="keyword">in</span> users:</span><br><span class="line">    <span class="built_in">print</span>(user.name)</span><br></pre></td></tr></table></figure>
+<h1>8. 实战项目</h1>
+<h2 id="8-1-项目1：命令行记事本">8.1 项目1：命令行记事本</h2>
+<ul>
+<li>功能：添加、查看、删除和搜索笔记</li>
+<li>技术：文件操作、命令行输入输出</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">display_notes</span>():</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&#x27;notes.txt&#x27;</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;No notes found.&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;notes.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        notes = file.readlines()</span><br><span class="line">        <span class="keyword">for</span> idx, note <span class="keyword">in</span> <span class="built_in">enumerate</span>(notes, <span class="number">1</span>):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;idx&#125;</span>. <span class="subst">&#123;note.strip()&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add_note</span>():</span><br><span class="line">    note = <span class="built_in">input</span>(<span class="string">&quot;Enter your note: &quot;</span>)</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;notes.txt&#x27;</span>, <span class="string">&#x27;a&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        file.write(note + <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Note added!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delete_note</span>():</span><br><span class="line">    display_notes()</span><br><span class="line">    note_id = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;Enter the note number to delete: &quot;</span>))</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;notes.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        notes = file.readlines()</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;notes.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        <span class="keyword">for</span> idx, note <span class="keyword">in</span> <span class="built_in">enumerate</span>(notes, <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> idx != note_id:</span><br><span class="line">                file.write(note)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Note deleted!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">search_note</span>():</span><br><span class="line">    search_term = <span class="built_in">input</span>(<span class="string">&quot;Enter a search term: &quot;</span>)</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;notes.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        notes = file.readlines()</span><br><span class="line">        <span class="keyword">for</span> idx, note <span class="keyword">in</span> <span class="built_in">enumerate</span>(notes, <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> search_term <span class="keyword">in</span> note:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;idx&#125;</span>. <span class="subst">&#123;note.strip()&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;\n1. View Notes&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;2. Add Note&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;3. Delete Note&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;4. Search Note&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;5. Exit&quot;</span>)</span><br><span class="line"></span><br><span class="line">        choice = <span class="built_in">input</span>(<span class="string">&quot;Enter your choice: &quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> choice == <span class="string">&#x27;1&#x27;</span>:</span><br><span class="line">            display_notes()</span><br><span class="line">        <span class="keyword">elif</span> choice == <span class="string">&#x27;2&#x27;</span>:</span><br><span class="line">            add_note()</span><br><span class="line">        <span class="keyword">elif</span> choice == <span class="string">&#x27;3&#x27;</span>:</span><br><span class="line">            delete_note()</span><br><span class="line">        <span class="keyword">elif</span> choice == <span class="string">&#x27;4&#x27;</span>:</span><br><span class="line">            search_note()</span><br><span class="line">        <span class="keyword">elif</span> choice == <span class="string">&#x27;5&#x27;</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Invalid choice, please try again.&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h2 id="8-2-项目2：Flask博客">8.2 项目2：Flask博客</h2>
+<ul>
+<li>功能：用户注册、登录、发布和查看文章</li>
+<li>技术：Flask、SQLAlchemy、模板渲染</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># app.py</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template, request, redirect, url_for</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_DATABASE_URI&#x27;</span>] = <span class="string">&#x27;sqlite:///blog.db&#x27;</span></span><br><span class="line">db = SQLAlchemy(app)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(db.Model):</span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    username = db.Column(db.String(<span class="number">80</span>), unique=<span class="literal">True</span>, nullable=<span class="literal">False</span>)</span><br><span class="line">    password = db.Column(db.String(<span class="number">120</span>), nullable=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Post</span>(db.Model):</span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    title = db.Column(db.String(<span class="number">120</span>), nullable=<span class="literal">False</span>)</span><br><span class="line">    content = db.Column(db.Text, nullable=<span class="literal">False</span>)</span><br><span class="line">    author_id = db.Column(db.Integer, db.ForeignKey(<span class="string">&#x27;user.id&#x27;</span>), nullable=<span class="literal">False</span>)</span><br><span class="line">    author = db.relationship(<span class="string">&#x27;User&#x27;</span>, backref=db.backref(<span class="string">&#x27;posts&#x27;</span>, lazy=<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    posts = Post.query.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;index.html&#x27;</span>, posts=posts)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/register&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">register</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        username = request.form[<span class="string">&#x27;username&#x27;</span>]</span><br><span class="line">        password = request.form[<span class="string">&#x27;password&#x27;</span>]</span><br><span class="line">        user = User(username=username, password=password)</span><br><span class="line">        db.session.add(user)</span><br><span class="line">        db.session.commit()</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;login&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;register.html&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/login&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">login</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        username = request.form[<span class="string">&#x27;username&#x27;</span>]</span><br><span class="line">        password = request.form[<span class="string">&#x27;password&#x27;</span>]</span><br><span class="line">        user = User.query.filter_by(username=username, password=password).first()</span><br><span class="line">        <span class="keyword">if</span> user:</span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;index&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;login.html&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/post&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">post</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        title = request.form[<span class="string">&#x27;title&#x27;</span>]</span><br><span class="line">        content = request.form[<span class="string">&#x27;content&#x27;</span>]</span><br><span class="line">        author_id = <span class="number">1</span>  <span class="comment"># 假设已登录用户的ID</span></span><br><span class="line">        post = Post(title=title, content=content, author_id=author_id)</span><br><span class="line">        db.session.add(post)</span><br><span class="line">        db.session.commit()</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;index&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;post.html&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    db.create_all()</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="8-3-项目3：数据分析项目">8.3 项目3：数据分析项目</h2>
+<ul>
+<li>功能：数据读取、清洗、分析和可视化</li>
+<li>技术：Pandas、Matplotlib</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;data.csv&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据清洗</span></span><br><span class="line">df = df.dropna()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据分析</span></span><br><span class="line"><span class="built_in">print</span>(df.describe())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据可视化</span></span><br><span class="line">df[<span class="string">&#x27;column_name&#x27;</span>].hist()</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Column Name&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Frequency&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Histogram of Column Name&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h1>9. 深入学习</h1>
+<h2 id="9-1-高级Python编程">9.1 高级Python编程</h2>
+<h3 id="9-1-1-元编程">9.1.1 元编程</h3>
+<p>元编程是指编写能够操作代码的代码，可以通过装饰器、元类等方式实现。</p>
+<h4 id="装饰器">装饰器</h4>
+<p>装饰器用于在不修改原函数的情况下，增强或改变函数的功能。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">my_decorator</span>(<span class="params">func</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Before function call&quot;</span>)</span><br><span class="line">        result = func(*args, **kwargs)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;After function call&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="meta">@my_decorator</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Hello!&quot;</span>)</span><br><span class="line"></span><br><span class="line">say_hello()</span><br></pre></td></tr></table></figure>
+<h4 id="元类">元类</h4>
+<p>元类是用于创建类的类，可以通过定义元类来控制类的创建过程。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Meta</span>(<span class="title class_ inherited__">type</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, name, bases, dct</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Creating class <span class="subst">&#123;name&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>().__new__(cls, name, bases, dct)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>(metaclass=Meta):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h3 id="9-1-2-设计模式">9.1.2 设计模式</h3>
+<p>设计模式是解决特定问题的通用方案。常见的设计模式包括单例模式、工厂模式、观察者模式等。</p>
+<h4 id="单例模式">单例模式</h4>
+<p>单例模式确保一个类只有一个实例。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>:</span><br><span class="line">    _instance = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> cls._instance:</span><br><span class="line">            cls._instance = <span class="built_in">super</span>(Singleton, cls).__new__(cls, *args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> cls._instance</span><br><span class="line"></span><br><span class="line">singleton1 = Singleton()</span><br><span class="line">singleton2 = Singleton()</span><br><span class="line"><span class="built_in">print</span>(singleton1 <span class="keyword">is</span> singleton2)  <span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+<h4 id="工厂模式">工厂模式</h4>
+<p>工厂模式通过工厂方法创建对象，避免直接实例化类。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">speak</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Woof!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">speak</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Meow!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AnimalFactory</span>:</span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">create_animal</span>(<span class="params">animal_type</span>):</span><br><span class="line">        <span class="keyword">if</span> animal_type == <span class="string">&quot;dog&quot;</span>:</span><br><span class="line">            <span class="keyword">return</span> Dog()</span><br><span class="line">        <span class="keyword">elif</span> animal_type == <span class="string">&quot;cat&quot;</span>:</span><br><span class="line">            <span class="keyword">return</span> Cat()</span><br><span class="line"></span><br><span class="line">dog = AnimalFactory.create_animal(<span class="string">&quot;dog&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(dog.speak())  <span class="comment"># Woof!</span></span><br></pre></td></tr></table></figure>
+<h2 id="9-2-并发编程">9.2 并发编程</h2>
+<p>并发编程使得程序能够同时处理多个任务，提高效率和性能。</p>
+<h3 id="9-2-1-多线程和多进程">9.2.1 多线程和多进程</h3>
+<h4 id="多线程">多线程</h4>
+<p>多线程允许程序同时执行多个线程。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">print_numbers</span>():</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">thread1 = threading.Thread(target=print_numbers)</span><br><span class="line">thread2 = threading.Thread(target=print_numbers)</span><br><span class="line"></span><br><span class="line">thread1.start()</span><br><span class="line">thread2.start()</span><br><span class="line"></span><br><span class="line">thread1.join()</span><br><span class="line">thread2.join()</span><br></pre></td></tr></table></figure>
+<h4 id="多进程">多进程</h4>
+<p>多进程允许程序同时执行多个进程。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">print_numbers</span>():</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">process1 = multiprocessing.Process(target=print_numbers)</span><br><span class="line">process2 = multiprocessing.Process(target=print_numbers)</span><br><span class="line"></span><br><span class="line">process1.start()</span><br><span class="line">process2.start()</span><br><span class="line"></span><br><span class="line">process1.join()</span><br><span class="line">process2.join()</span><br></pre></td></tr></table></figure>
+<h3 id="9-2-2-异步编程（asyncio）">9.2.2 异步编程（asyncio）</h3>
+<p>异步编程使得程序可以在等待I/O操作时执行其他任务。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">say_hello</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;World&quot;</span>)</span><br><span class="line"></span><br><span class="line">asyncio.run(say_hello())</span><br></pre></td></tr></table></figure>
+<h2 id="9-3-数据科学">9.3 数据科学</h2>
+<p>数据科学包括高级数据分析和机器学习。</p>
+<h3 id="9-3-1-高级数据分析（SciPy-Scikit-learn）">9.3.1 高级数据分析（SciPy, Scikit-learn）</h3>
+<h4 id="SciPy">SciPy</h4>
+<p>SciPy是用于科学计算的库。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> scipy.integrate <span class="keyword">as</span> spi</span><br><span class="line"></span><br><span class="line">result = spi.quad(<span class="keyword">lambda</span> x: x**<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+<h4 id="Scikit-learn">Scikit-learn</h4>
+<p>Scikit-learn是用于机器学习的库。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载数据集</span></span><br><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拆分数据集</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练模型</span></span><br><span class="line">model = RandomForestClassifier()</span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 预测和评估</span></span><br><span class="line">y_pred = model.predict(X_test)</span><br><span class="line"><span class="built_in">print</span>(accuracy_score(y_test, y_pred))</span><br></pre></td></tr></table></figure>
+<h3 id="9-3-2-机器学习基础">9.3.2 机器学习基础</h3>
+<h4 id="线性回归">线性回归</h4>
+<p>线性回归是最基本的回归算法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line"><span class="comment"># 准备数据</span></span><br><span class="line">X = np.array([[<span class="number">1</span>], [<span class="number">2</span>], [<span class="number">3</span>], [<span class="number">4</span>], [<span class="number">5</span>]])</span><br><span class="line">y = np.array([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练模型</span></span><br><span class="line">model = LinearRegression()</span><br><span class="line">model.fit(X, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 预测</span></span><br><span class="line"><span class="built_in">print</span>(model.predict([[<span class="number">6</span>]]))  <span class="comment"># 结果接近7</span></span><br></pre></td></tr></table></figure>
+<h4 id="K-means-聚类">K-means 聚类</h4>
+<p>K-means 聚类是一种无监督学习算法，用于将数据集分为K个簇。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成数据</span></span><br><span class="line">X = np.random.rand(<span class="number">100</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练模型</span></span><br><span class="line">kmeans = KMeans(n_clusters=<span class="number">3</span>)</span><br><span class="line">kmeans.fit(X)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 预测和可视化</span></span><br><span class="line">labels = kmeans.labels_</span><br><span class="line">centroids = kmeans.cluster_centers_</span><br><span class="line"></span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=labels, cmap=<span class="string">&#x27;viridis&#x27;</span>)</span><br><span class="line">plt.scatter(centroids[:, <span class="number">0</span>], centroids[:, <span class="number">1</span>], c=<span class="string">&#x27;red&#x27;</span>, marker=<span class="string">&#x27;X&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="9-4-Web开发进阶">9.4 Web开发进阶</h2>
+<h3 id="9-4-1-RESTful-API">9.4.1 RESTful API</h3>
+<p>RESTful API是一种使用HTTP请求来访问和操作资源的架构风格。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Flask RESTful API 示例</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, jsonify</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据库模拟</span></span><br><span class="line">items = []</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/items&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_items</span>():</span><br><span class="line">    <span class="keyword">return</span> jsonify(items)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/items&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add_item</span>():</span><br><span class="line">    item = request.get_json()</span><br><span class="line">    items.append(item)</span><br><span class="line">    <span class="keyword">return</span> jsonify(item), <span class="number">201</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="9-4-2-前后端分离开发（如Flask-React）">9.4.2 前后端分离开发（如Flask + React）</h3>
+<p>前后端分离的开发模式中，后端使用API提供数据，前端使用框架如React展示数据。</p>
+<h4 id="后端（Flask）">后端（Flask）</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/api/data&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_data</span>():</span><br><span class="line">    data = &#123;<span class="string">&#x27;message&#x27;</span>: <span class="string">&#x27;Hello, World!&#x27;</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> jsonify(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="前端（React）">前端（React）</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">// React 示例代码</span><br><span class="line"><span class="keyword">import</span> React, &#123; useEffect, useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line">function App() &#123;</span><br><span class="line">  const [data, setData] = useState(null);</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    fetch(<span class="string">&#x27;/api/data&#x27;</span>)</span><br><span class="line">      .then(response =&gt; response.json())</span><br><span class="line">      .then(data =&gt; setData(data));</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &#123;data ? &lt;p&gt;&#123;data.message&#125;&lt;/p&gt; : &lt;p&gt;Loading...&lt;/p&gt;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+<h1>10. 参与开源项目和社区</h1>
+<ul>
+<li>在GitHub上寻找并贡献开源项目</li>
+<li>参与Python社区的讨论和交流（如Reddit, StackOverflow）</li>
+</ul>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          hzr
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2024/05/22/Python-progranming/" title="Python 学习笔记" target="_blank">http://example.com/2024/05/22/Python-progranming/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2024/05/22/Python-progranming/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2024/05/18/Cpp-progranming/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++面向对象编程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -323,9 +708,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

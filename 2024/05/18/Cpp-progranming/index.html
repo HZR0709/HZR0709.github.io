@@ -10,15 +10,15 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="心有所向，无问东西">
+  <meta name="description" content="函数模板与类模板 利用模板机制可以显著减少冗余信息，能大幅度的结约程序代码，进一步提高面向对象程序的可重用性和可维护性。模板是实现代码重用机制的一种工具，它可以实现类型参数化，即把类型定义为参数，从而实现代码的重用，使得一段程序可以用于不同类型的对象，大幅度地提高程序设计的效率。 模板的概念 在程序设计中往往存在这样的现象：两个或多个函数的函数体完全相同，差别仅在与它们的类型参数不同。 函数模板">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++面向对象编程">
 <meta property="og:url" content="http://example.com/2024/05/18/Cpp-progranming/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="心有所向，无问东西">
+<meta property="og:description" content="函数模板与类模板 利用模板机制可以显著减少冗余信息，能大幅度的结约程序代码，进一步提高面向对象程序的可重用性和可维护性。模板是实现代码重用机制的一种工具，它可以实现类型参数化，即把类型定义为参数，从而实现代码的重用，使得一段程序可以用于不同类型的对象，大幅度地提高程序设计的效率。 模板的概念 在程序设计中往往存在这样的现象：两个或多个函数的函数体完全相同，差别仅在与它们的类型参数不同。 函数模板">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-17T20:06:27.000Z">
-<meta property="article:modified_time" content="2024-05-17T20:07:31.952Z">
+<meta property="article:modified_time" content="2024-05-24T05:24:52.580Z">
 <meta property="article:author" content="hzr">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -259,7 +259,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">0字</span>
+      <span class="post-count">722字</span>
     </span>
   </span>
 
@@ -268,7 +268,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">3分</span>
     </span>
   </span>
 </div>
@@ -279,7 +279,20 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    
+    <h1>函数模板与类模板</h1>
+<p>利用模板机制可以显著减少冗余信息，能大幅度的结约程序代码，进一步提高面向对象程序的可重用性和可维护性。模板是实现代码重用机制的一种工具，它可以实现类型参数化，即把类型定义为参数，从而实现代码的重用，使得一段程序可以用于不同类型的对象，大幅度地提高程序设计的效率。</p>
+<h2 id="模板的概念">模板的概念</h2>
+<p>在程序设计中往往存在这样的现象：两个或多个函数的函数体完全相同，差别仅在与它们的类型参数不同。</p>
+<h2 id="函数模板">函数模板</h2>
+<p>所谓函数模板，实际上是建立一个通用函数，其函数返回类型和形参类型不具体指示，用一个虚拟的类型来代表，这个通用函数就称为函数模板。在调用函数时，系统会根据实参的类型（模板实参）来取代虚拟类型，从而实现不同函数的功能。</p>
+<p>函数声明格式如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> 类型参数&gt;</span><br><span class="line">返回类型 函数名(模板形参表)</span><br><span class="line">&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br><span class="line">也可以定义为如下形式</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> 类型参数&gt;</span><br><span class="line">返回类型 函数名(模板形参表)</span><br><span class="line">&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>template</code>是一个声明模板的关键字，它表示声明一个模板。类型参数（通常用C++标识符表示，如T、type等）实际上是一个虚拟的类型名，使用前并未指定它是哪一种具体的类型，但使用函数模板时，必须将类型实例化。类型参数前需加关键字<code>typename</code>或<code>class</code>，<code>typename</code>和<code>class</code>的作用相同，都是表示一个虚拟的类型名（即类型参数）。</p>
+<p>例：一个与指针有关的函数模板</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">Max</span><span class="params">(T *array, <span class="type">int</span> size = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">	T max = array[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; size; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(array[i] &gt; max) max = array[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> array_int[] = &#123;<span class="number">783</span>, <span class="number">78</span>, <span class="number">234</span>, <span class="number">34</span>, <span class="number">90</span>, <span class="number">1</span>&#125;;</span><br><span class="line">	<span class="type">double</span> array_double[] = &#123;<span class="number">99.02</span>, <span class="number">21.9</span>, <span class="number">23.90</span>, <span class="number">12.89</span>, <span class="number">1.09</span>, <span class="number">34.9</span>&#125;;</span><br><span class="line">	<span class="type">int</span> imax = <span class="built_in">Max</span>(array_int, <span class="number">6</span>);</span><br><span class="line">	<span class="type">double</span> dmax = <span class="built_in">Max</span>(marray_double, <span class="number">6</span>);</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;整形数组的最大值是：&quot;</span> &lt;&lt; imax &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;双精度整形数组的最大值是：&quot;</span> &lt;&lt; dmax &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例：函数模板的重载</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="meta">#include &lt;iostream&gt;</span></span><br><span class="line"><span class="keyword">using</span> namespace std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="keyword">Type</span>&gt;</span><br><span class="line"><span class="keyword">Type</span> max(<span class="keyword">Type</span> x, <span class="keyword">Type</span> y) &#123;</span><br><span class="line">	<span class="keyword">return</span> x &gt; y ? x : y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="keyword">Type</span>&gt;</span><br><span class="line"><span class="keyword">type</span> Max(<span class="keyword">Type</span> x, <span class="keyword">Type</span> y, <span class="keyword">Type</span> z) &#123;</span><br><span class="line">	<span class="keyword">Type</span> t = x &gt; y ?  x : y;</span><br><span class="line">	t = t &gt; z ? t : z;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> main() &#123;</span><br><span class="line">	cout &lt;&lt; &quot;33，66中最大值为 &quot; &lt;&lt; Max(<span class="number">33</span>,<span class="number">66</span>) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;33，66，44中最大值为 &quot; &lt;&lt; Maz(<span class="number">33</span>,<span class="number">66</span>,<span class="number">44</span>) &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
     
 
     
@@ -417,6 +430,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2024/05/22/Python-progranming/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Python 学习笔记
+        
+      </div>
+    </a>
   
   
     <a href="/2024/05/17/Hexo-Create-Blog/" id="article-nav-older" class="article-nav-link-wrap">
@@ -592,6 +614,10 @@
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hexo,Markdown</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -642,8 +668,8 @@
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="https://zhousiwei.gitee.io/ibooks/" target="_blank" 
-                class="search-title" title="记录工作和学习过程中的笔记：Java、前端开发、Hexo博客、聚合支付、Linux笔记、ElasticSearch、ELK日志分析">
+              <a href="https://" target="_blank" 
+                class="search-title" title="记录工作和学习过程中的笔记：C、C++开发、Hexo博客、Python、Linux笔记、嵌入式开发">
                 
                   <img src="https://zhousiwei.gitee.io/ibooks/favicon.ico">
                 
@@ -700,7 +726,7 @@
     	<section class="tools-section tools-section-me" q-show="aboutme">
         
           
-  	  		<div class="aboutme-wrap" id="aboutme">主要涉及技术：<br>Java后端开发、聚合支付、<br>公众号开发、开源爱好者、Linux<br><br>联系QQ:2434387555<br><br>很惭愧<br><br>只做了一点微小的工作<br>谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="aboutme">主要涉及技术：<br>C++、嵌入式<br>Python、开源爱好者、Linux<br><br>联系QQ:903458367<br><br>很惭愧<br><br>只做了一点微小的工作<br>谢谢大家</div>
   	  	
     	</section>
     
