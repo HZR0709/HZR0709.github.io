@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://HZR0709.github.io">
-  <title>C++面向对象编程 | 个人博客</title>
+  <title>HTTP服务器 | 个人博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="函数模板与类模板 利用模板机制可以显著减少冗余信息，能大幅度的结约程序代码，进一步提高面向对象程序的可重用性和可维护性。模板是实现代码重用机制的一种工具，它可以实现类型参数化，即把类型定义为参数，从而实现代码的重用，使得一段程序可以用于不同类型的对象，大幅度地提高程序设计的效率。 模板的概念 在程序设计中往往存在这样的现象：两个或多个函数的函数体完全相同，差别仅在与它们的类型参数不同。 函数模板">
+  <meta name="description" content="本文构建了一个十分简易的HTTPServer，实现http解析与应答，能够进行简单的网页部署">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++面向对象编程">
-<meta property="og:url" content="https://hzr0709.github.io/2024/05/18/Cpp-progranming/index.html">
+<meta property="og:title" content="HTTP服务器">
+<meta property="og:url" content="https://hzr0709.github.io/2024/06/11/HTTP%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="函数模板与类模板 利用模板机制可以显著减少冗余信息，能大幅度的结约程序代码，进一步提高面向对象程序的可重用性和可维护性。模板是实现代码重用机制的一种工具，它可以实现类型参数化，即把类型定义为参数，从而实现代码的重用，使得一段程序可以用于不同类型的对象，大幅度地提高程序设计的效率。 模板的概念 在程序设计中往往存在这样的现象：两个或多个函数的函数体完全相同，差别仅在与它们的类型参数不同。 函数模板">
+<meta property="og:description" content="本文构建了一个十分简易的HTTPServer，实现http解析与应答，能够进行简单的网页部署">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-17T20:06:27.000Z">
-<meta property="article:modified_time" content="2024-06-13T10:09:29.674Z">
+<meta property="article:published_time" content="2024-06-11T14:34:50.000Z">
+<meta property="article:modified_time" content="2024-06-13T10:09:02.489Z">
 <meta property="article:author" content="hzr">
-<meta property="article:tag" content="C++">
+<meta property="article:tag" content="C++、Socket">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
@@ -226,14 +226,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Cpp-progranming" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-HTTP服务器" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      C++面向对象编程
+      HTTP服务器
     </h1>
   
 
@@ -245,8 +245,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2024/05/18/Cpp-progranming/" class="archive-article-date">
-        <time datetime="2024-05-17T20:06:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-18</time>
+<a href="/2024/06/11/HTTP%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="archive-article-date">
+        <time datetime="2024-06-11T14:34:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-11</time>
 </a>
 
   
@@ -259,7 +259,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">722字</span>
+      <span class="post-count">4.7k字</span>
     </span>
   </span>
 
@@ -268,7 +268,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">3分</span>
+      <span class="post-count">21分</span>
     </span>
   </span>
 </div>
@@ -279,19 +279,212 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1>函数模板与类模板</h1>
-<p>利用模板机制可以显著减少冗余信息，能大幅度的结约程序代码，进一步提高面向对象程序的可重用性和可维护性。模板是实现代码重用机制的一种工具，它可以实现类型参数化，即把类型定义为参数，从而实现代码的重用，使得一段程序可以用于不同类型的对象，大幅度地提高程序设计的效率。</p>
-<h2 id="模板的概念">模板的概念</h2>
-<p>在程序设计中往往存在这样的现象：两个或多个函数的函数体完全相同，差别仅在与它们的类型参数不同。</p>
-<h2 id="函数模板">函数模板</h2>
-<p>所谓函数模板，实际上是建立一个通用函数，其函数返回类型和形参类型不具体指示，用一个虚拟的类型来代表，这个通用函数就称为函数模板。在调用函数时，系统会根据实参的类型（模板实参）来取代虚拟类型，从而实现不同函数的功能。</p>
-<p>函数声明格式如下：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> 类型参数&gt;</span><br><span class="line">返回类型 函数名(模板形参表)</span><br><span class="line">&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br><span class="line">也可以定义为如下形式</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> 类型参数&gt;</span><br><span class="line">返回类型 函数名(模板形参表)</span><br><span class="line">&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>template</code>是一个声明模板的关键字，它表示声明一个模板。类型参数（通常用C++标识符表示，如T、type等）实际上是一个虚拟的类型名，使用前并未指定它是哪一种具体的类型，但使用函数模板时，必须将类型实例化。类型参数前需加关键字<code>typename</code>或<code>class</code>，<code>typename</code>和<code>class</code>的作用相同，都是表示一个虚拟的类型名（即类型参数）。</p>
-<p>例：一个与指针有关的函数模板</p>
-<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">Max</span><span class="params">(T *array, <span class="type">int</span> size = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">	T max = array[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; size; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(array[i] &gt; max) max = array[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> array_int[] = &#123;<span class="number">783</span>, <span class="number">78</span>, <span class="number">234</span>, <span class="number">34</span>, <span class="number">90</span>, <span class="number">1</span>&#125;;</span><br><span class="line">	<span class="type">double</span> array_double[] = &#123;<span class="number">99.02</span>, <span class="number">21.9</span>, <span class="number">23.90</span>, <span class="number">12.89</span>, <span class="number">1.09</span>, <span class="number">34.9</span>&#125;;</span><br><span class="line">	<span class="type">int</span> imax = <span class="built_in">Max</span>(array_int, <span class="number">6</span>);</span><br><span class="line">	<span class="type">double</span> dmax = <span class="built_in">Max</span>(marray_double, <span class="number">6</span>);</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;整形数组的最大值是：&quot;</span> &lt;&lt; imax &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;双精度整形数组的最大值是：&quot;</span> &lt;&lt; dmax &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>例：函数模板的重载</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="meta">#include &lt;iostream&gt;</span></span><br><span class="line"><span class="keyword">using</span> namespace std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="keyword">Type</span>&gt;</span><br><span class="line"><span class="keyword">Type</span> max(<span class="keyword">Type</span> x, <span class="keyword">Type</span> y) &#123;</span><br><span class="line">	<span class="keyword">return</span> x &gt; y ? x : y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="keyword">Type</span>&gt;</span><br><span class="line"><span class="keyword">type</span> Max(<span class="keyword">Type</span> x, <span class="keyword">Type</span> y, <span class="keyword">Type</span> z) &#123;</span><br><span class="line">	<span class="keyword">Type</span> t = x &gt; y ?  x : y;</span><br><span class="line">	t = t &gt; z ? t : z;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> main() &#123;</span><br><span class="line">	cout &lt;&lt; &quot;33，66中最大值为 &quot; &lt;&lt; Max(<span class="number">33</span>,<span class="number">66</span>) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;33，66，44中最大值为 &quot; &lt;&lt; Maz(<span class="number">33</span>,<span class="number">66</span>,<span class="number">44</span>) &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <p>本文构建了一个十分简易的HTTPServer，实现http解析与应答，能够进行简单的网页部署</p>
+<span id="more"></span>
+<h1>1、Windows下的套接字编程</h1>
+<h3 id="1、需包含的头文件">1、需包含的头文件</h3>
+<p>Windows 下使用 Winsock 库进行套接字编程，需要包含如下文件</p>
+<p>#include &lt;windows.h&gt;<br>
+#include &lt;winSock2.h&gt;</p>
+<h3 id="2、创建-Winsock-环境">2、创建 Winsock 环境</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">WORD ver = <span class="built_in">MAKEWORD</span>(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">WSADATA dat;</span><br><span class="line"><span class="built_in">WSAStartup</span>(ver, &amp;dat);</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>MAKEWORD(2, 2)</code> 创建一个版本号，表示你希望使用 Winsock 库的版本为 2.2。这里的 <code>2</code> 是主版本号，<code>2</code> 是次版本号，构成了一个 <code>WORD</code> 类型的版本号。</li>
+<li><code>WSADATA dat;</code> 声明了一个 <code>WSADATA</code> 结构体类型的变量 <code>dat</code>，用于接收 <code>WSAStartup</code> 函数的初始化信息。</li>
+<li><code>WSAStartup(ver, &amp;dat);</code> 调用了 <code>WSAStartup</code> 函数，该函数用于初始化 Winsock 库，指定使用的版本号，并将初始化信息保存在 <code>dat</code> 变量中。</li>
+</ol>
+<p>具体来说，<code>WSAStartup</code> 函数用于启动 Winsock 库的使用，在你的应用程序中调用该函数后，就可以使用 Winsock 提供的套接字编程功能了。需要注意的是，在使用完 Winsock 库后，应该调用 <code>WSACleanup</code> 函数来清理资源。</p>
+<h3 id="3、创建套接字">3、创建套接字</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">SOCKET <span class="title">socket</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  <span class="type">int</span> af,</span></span></span><br><span class="line"><span class="params"><span class="function">  <span class="type">int</span> type,</span></span></span><br><span class="line"><span class="params"><span class="function">  <span class="type">int</span> protocol</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br><span class="line"><span class="comment">//例</span></span><br><span class="line">SOCKET _sock = <span class="built_in">socket</span>(AF_INET, SOCK_STREAM, IPPROTO_TCP);</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>af</code>（Address Family）：指定地址族，常用的有 <code>AF_INET</code>（IPv4 地址族）和 <code>AF_INET6</code>（IPv6 地址族）等。对于 TCP/IP，通常使用 <code>AF_INET</code>。</li>
+<li><code>type</code>：指定套接字类型，常用的有 <code>SOCK_STREAM</code>（流式套接字，对应于 TCP）和 <code>SOCK_DGRAM</code>（数据报套接字，对应于 UDP）等。对于 TCP 通信，通常使用 <code>SOCK_STREAM</code>。</li>
+<li><code>protocol</code>：指定协议，对于 TCP/IP，通常使用 <code>IPPROTO_TCP</code> 表示 TCP 协议。</li>
+</ul>
+<h3 id="4、绑定地址和端口">4、绑定地址和端口</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">	sockaddr_in _sin = &#123;&#125;;</span><br><span class="line">    _sin.sin_family = AF_INET;</span><br><span class="line">    _sin.sin_port = <span class="built_in">htons</span>(<span class="number">4567</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _WIN32</span></span><br><span class="line">    _sin.sin_addr.S_un.S_addr = INADDR_ANY; <span class="comment">//Windows下的写法</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    _sin.sin_addr.s_addr = INADDR_ANY; <span class="comment">//Unix衍生系统  Linux环境下的写法</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">if</span> (SOCKET_ERROR == <span class="built_in">bind</span>(_sock, (sockaddr*)&amp;_sin, <span class="built_in">sizeof</span>(_sin))) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;绑定网络端口失败...\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;绑定网络端口成功...\n&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><code>sockaddr_in _sin = &#123;&#125;;</code>：创建一个 <code>sockaddr_in</code> 结构体类型的变量 <code>_sin</code>，并初始化为全零，这样可以避免结构体中的未初始化字段可能引发的问题。</p>
+<p><code>_sin.sin_family = AF_INET;</code>：设置套接字地址族为 <code>AF_INET</code>，表示使用 IPv4 地址族。</p>
+<p><code>_sin.sin_port = htons(4567);</code>：将端口号设置为网络字节序（Big Endian），使用 <code>htons</code> 函数将端口号从主机字节序转换为网络字节序。</p>
+<p><code>_sin.sin_addr.s_addr = INADDR_ANY;</code>：设置 IP 地址为 <code>INADDR_ANY</code>，表示服务器将接受来自任意网络接口的连接请求。</p>
+<p><code>bind(_sock, (sockaddr*)&amp;_sin, sizeof(_sin))</code>：调用 <code>bind</code> 函数将套接字 <code>_sock</code> 绑定到指定的 IP 地址和端口上。</p>
+<ul>
+<li><code>_sock</code> 是之前使用 <code>socket</code> 函数创建的套接字描述符。</li>
+<li><code>(sockaddr*)&amp;_sin</code> 强制类型转换为 <code>sockaddr*</code> 类型，因为 <code>bind</code> 函数的参数类型为 <code>sockaddr*</code>。</li>
+<li><code>sizeof(_sin)</code> 表示传递给 <code>bind</code> 函数的地址结构体的大小。</li>
+</ul>
+<p><code>if (SOCKET_ERROR == bind(_sock, (sockaddr*)&amp;_sin, sizeof(_sin))) &#123; ... &#125;</code>：判断 <code>bind</code> 函数的返回值是否等于 <code>SOCKET_ERROR</code>，如果等于，则表示绑定失败，输出错误信息；否则表示绑定成功，输出成功信息。</p>
+<h3 id="5、监听连接请求">5、监听连接请求</h3>
+<figure class="highlight perl"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (SOCKET_ERROR == <span class="keyword">listen</span>(_sock, <span class="number">5</span>)) &#123;</span><br><span class="line">    <span class="keyword">printf</span>(<span class="string">&quot;监听网络端口失败...\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">printf</span>(<span class="string">&quot;监听网络端口成功...\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>listen(_sock, 5)</code>：调用 <code>listen</code> 函数开始监听套接字连接请求。
+<ul>
+<li><code>_sock</code> 是之前使用 <code>socket</code> 函数创建的套接字描述符。</li>
+<li><code>5</code> 表示指定套接字连接队列的最大长度，即同时可以处理的待处理连接请求的数量。</li>
+</ul>
+</li>
+<li><code>if (SOCKET_ERROR == listen(_sock, 5)) &#123; ... &#125;</code>：判断 <code>listen</code> 函数的返回值是否等于 <code>SOCKET_ERROR</code>，如果等于，则表示监听失败，输出错误信息；否则表示监听成功，输出成功信息。</li>
+</ol>
+<p><code>listen</code> 函数的作用是告诉操作系统开始监听套接字上的连接请求，并指定可以同时处理的待处理连接请求的最大数量。一旦有新的连接请求到达，操作系统会将其加入到套接字的待处理连接队列中，然后等待程序调用 <code>accept</code> 函数来接受连接。</p>
+<p>需要注意的是，<code>listen</code> 函数仅用于监听套接字，不会阻塞等待连接请求，因此在调用 <code>listen</code> 函数后，程序可以继续执行其他操作，例如调用 <code>accept</code> 函数来接受连接。</p>
+<h3 id="6、select多路复用">6、select多路复用</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">fd_set fdRead; <span class="comment">// 描述符集合</span></span><br><span class="line">fd_set fdWrite;</span><br><span class="line">fd_set fdExp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">FD_ZERO</span>(&amp;fdRead); <span class="comment">// 清理集合</span></span><br><span class="line"><span class="built_in">FD_ZERO</span>(&amp;fdWrite);</span><br><span class="line"><span class="built_in">FD_ZERO</span>(&amp;fdExp);</span><br><span class="line"></span><br><span class="line"><span class="built_in">FD_SET</span>(_sock, &amp;fdRead);<span class="comment">// 将描述符加入集合中</span></span><br><span class="line"><span class="built_in">FD_SET</span>(_sock, &amp;fdWrite);</span><br><span class="line"><span class="built_in">FD_SET</span>(_sock, &amp;fdExp);</span><br><span class="line">SOCKET maxSock = _sock;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> n = (<span class="type">int</span>)g_clients.<span class="built_in">size</span>() - <span class="number">1</span>; n &gt;= <span class="number">0</span>; n--) &#123;</span><br><span class="line">    <span class="built_in">FD_SET</span>(g_clients[n], &amp;fdRead);</span><br><span class="line">    <span class="keyword">if</span> (maxSock &lt; g_clients[n]) &#123;</span><br><span class="line">        maxSock = g_clients[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码是在使用 <code>select</code> 函数前准备好描述符集合 <code>fdRead</code>、<code>fdWrite</code>、<code>fdExp</code> 的过程.</p>
+<ol>
+<li>
+<p><code>fd_set</code> 结构体：</p>
+<ul>
+<li><code>fdRead</code>、<code>fdWrite</code>、<code>fdExp</code> 是用来存放描述符的集合，分别用于读、写和异常事件的监听。</li>
+<li><code>FD_ZERO(&amp;fdRead)</code>、<code>FD_ZERO(&amp;fdWrite)</code>、<code>FD_ZERO(&amp;fdExp)</code> 将这些集合清空，使其不包含任何描述符。</li>
+</ul>
+</li>
+<li>
+<p><code>FD_SET</code> 函数：</p>
+<ul>
+<li><code>FD_SET(_sock, &amp;fdRead)</code>、<code>FD_SET(_sock, &amp;fdWrite)</code>、<code>FD_SET(_sock, &amp;fdExp)</code> 将 <code>_sock</code> 描述符添加到对应的集合中，表示对该描述符进行监听。</li>
+<li><code>_sock</code> 是服务器的监听套接字，所以需要监听读、写、异常事件。</li>
+</ul>
+</li>
+<li>
+<p>添加客户端套接字：</p>
+<ul>
+<li>使用 <code>for</code> 循环遍历 <code>g_clients</code> 客户端套接字列表，将每个客户端套接字添加到 <code>fdRead</code> 集合中，表示对客户端的读事件进行监听。</li>
+<li>同时，在循环中找出 <code>g_clients</code> 中最大的套接字描述符，并保存在 <code>maxSock</code> 变量中，这个最大描述符值会在后面调用 <code>select</code> 函数时用到。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">timeval t = &#123; <span class="number">0</span>, <span class="number">0</span> &#125;;</span><br><span class="line"><span class="type">int</span> ret = <span class="built_in">select</span>(maxSock + <span class="number">1</span>, &amp;fdRead, &amp;fdWrite, &amp;fdExp, &amp;t);</span><br><span class="line"><span class="keyword">if</span> (ret &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;select任务结束。\n&quot;</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用 <code>select</code> 函数来等待套接字事件的发生。</p>
+<ol>
+<li><code>timeval t = &#123; 0, 0 &#125;;</code>：
+<ul>
+<li>创建了一个 <code>timeval</code> 结构体变量 <code>t</code>，并将其初始化为0秒。</li>
+<li><code>timeval</code> 结构体用于设置 <code>select</code> 函数的超时时间，由于这里将其设置为0秒，表示 <code>select</code> 函数在检查完描述符状态后立即返回，不会阻塞等待事件发生。</li>
+</ul>
+</li>
+<li><code>int ret = select(maxSock + 1, &amp;fdRead, &amp;fdWrite, &amp;fdExp, &amp;t);</code>：
+<ul>
+<li>调用 <code>select</code> 函数来等待套接字事件的发生。</li>
+<li><code>maxSock + 1</code> 表示最大描述符值加一，即描述符集合中需要监视的最大描述符值。</li>
+<li><code>&amp;fdRead</code>、<code>&amp;fdWrite</code>、<code>&amp;fdExp</code> 分别表示读、写、异常事件的描述符集合。</li>
+<li><code>&amp;t</code> 表示超时时间，这里设置为0秒表示立即返回。</li>
+</ul>
+</li>
+<li><code>if (ret &lt; 0) &#123; ... &#125;</code>：
+<ul>
+<li>判断 <code>select</code> 函数的返回值是否小于0，如果小于0，则表示 <code>select</code> 函数出错或任务结束，输出相应的提示信息并跳出循环。</li>
+<li><code>ret</code> 的值表示有事件发生的描述符数量，如果没有事件发生，则 <code>ret</code> 的值为0。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="7、接受连接">7、接受连接</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">        <span class="keyword">if</span> (<span class="built_in">FD_ISSET</span>(_sock, &amp;fdRead)) &#123;</span><br><span class="line">            <span class="built_in">FD_CLR</span>(_sock, &amp;fdRead);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// accept等待接受客户端连接</span></span><br><span class="line">            sockaddr_in clientAddr = &#123;&#125;;</span><br><span class="line">            <span class="type">int</span> nAddrLen = <span class="built_in">sizeof</span>(sockaddr_in);</span><br><span class="line">            SOCKET _cSock = INVALID_SOCKET;</span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _WIN32</span></span><br><span class="line">            _cSock = <span class="built_in">accept</span>(_sock, (sockaddr*)&amp;clientAddr, &amp;nAddrLen);</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">            _cSock = <span class="built_in">accept</span>(_sock, (sockaddr*)&amp;clientAddr, (<span class="type">socklen_t</span>*)&amp;nAddrLen);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">            <span class="keyword">if</span> (INVALID_SOCKET == _cSock) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;接收到无效客户端SOCKET...\n&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                g_clients.<span class="built_in">push_back</span>(_cSock);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;新客户端加入：socket = %d, IP = %s \n&quot;</span>, (<span class="type">int</span>)_cSock, <span class="built_in">inet_ntoa</span>(clientAddr.sin_addr));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>检查监听套接字 <code>_sock</code> 是否在 <code>fdRead</code> 集合中，并且如果有数据可读，则调用 <code>accept</code> 函数接受客户端连接。</p>
+<ol>
+<li><code>FD_ISSET(_sock, &amp;fdRead)</code>：
+<ul>
+<li><code>FD_ISSET</code> 函数用于检查描述符是否在指定的集合中，并且表示该描述符是否有可读数据。</li>
+<li>这里用于检查监听套接字 <code>_sock</code> 是否在 <code>fdRead</code> 集合中，如果是，表示有新的客户端连接请求到达。</li>
+</ul>
+</li>
+<li><code>FD_CLR(_sock, &amp;fdRead)</code>：
+<ul>
+<li><code>FD_CLR</code> 函数用于从集合中清除指定的描述符。</li>
+<li>这里将监听套接字 <code>_sock</code> 从 <code>fdRead</code> 集合中清除，避免重复处理同一个连接请求。</li>
+</ul>
+</li>
+<li><code>accept</code> 函数：
+<ul>
+<li><code>accept</code> 函数用于接受客户端的连接请求，返回一个新的套接字用于与客户端通信。</li>
+<li>在 Windows 平台下，<code>accept</code> 函数的第二个参数是 <code>sockaddr*</code> 类型的地址结构体指针，用于存储客户端的地址信息。</li>
+<li><code>accept</code> 函数成功返回新的套接字 <code>_cSock</code>，用于后续与客户端通信；如果返回 <code>INVALID_SOCKET</code>，表示接受连接失败。</li>
+</ul>
+</li>
+<li>将新连接的套接字添加到 <code>g_clients</code> 列表中，并输出客户端的 IP 地址和端口信息。</li>
+</ol>
+<h3 id="8、接收和发送数据">8、接收和发送数据</h3>
+<p><code>recv</code> 和 <code>send</code> 是用于在套接字编程中进行数据收发的两个常用函数，下面分别对它们的用法进行解释：</p>
+<p><strong><code>recv</code> 函数</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">recv</span><span class="params">(SOCKET s, <span class="type">char</span>* buf, <span class="type">int</span> len, <span class="type">int</span> flags)</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>s</code>: 指定要接收数据的套接字。</li>
+<li><code>buf</code>: 指向接收数据的缓冲区的指针。</li>
+<li><code>len</code>: 缓冲区的长度，即可以接收的最大字节数。</li>
+<li><code>flags</code>: 用于指定接收数据的方式，常用的取值有：
+<ul>
+<li><code>0</code>: 默认值，表示以默认方式接收数据。</li>
+<li><code>MSG_PEEK</code>: 接收数据但不从输入队列中移除数据。</li>
+<li><code>MSG_WAITALL</code>: 等待直到接收到指定长度的数据或出错。</li>
+<li>等等，还有其他选项可以用于控制接收数据的行为。</li>
+</ul>
+</li>
+</ul>
+<p><code>recv</code> 函数的返回值表示实际接收到的数据的字节数，如果返回值为0表示对方已关闭连接，返回值为 <code>SOCKET_ERROR</code> 表示接收出错。</p>
+<p><strong><code>send</code> 函数</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">send</span><span class="params">(SOCKET s, <span class="type">const</span> <span class="type">char</span>* buf, <span class="type">int</span> len, <span class="type">int</span> flags)</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>s</code>: 指定要发送数据的套接字。</li>
+<li><code>buf</code>: 指向要发送数据的缓冲区的指针。</li>
+<li><code>len</code>: 要发送的数据的长度，即缓冲区中的字节数。</li>
+<li><code>flags</code>: 用于指定发送数据的方式，常用的取值有：
+<ul>
+<li><code>0</code>: 默认值，表示以默认方式发送数据。</li>
+<li><code>MSG_NOSIGNAL</code>: 在发送数据时不产生 <code>SIGPIPE</code> 信号，一般在 Linux 环境下使用。</li>
+</ul>
+</li>
+</ul>
+<p><code>send</code> 函数的返回值表示实际发送的数据的字节数，如果返回值为 <code>SOCKET_ERROR</code> 表示发送出错。</p>
+<p><strong>示例用法</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> recvBuf[<span class="number">1024</span>]; <span class="comment">// 接收数据的缓冲区</span></span><br><span class="line"><span class="type">char</span> sendBuf[] = <span class="string">&quot;Hello, this is a test message.&quot;</span>; <span class="comment">// 要发送的数据</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 接收数据</span></span><br><span class="line"><span class="type">int</span> recvBytes = <span class="built_in">recv</span>(_cSock, recvBuf, <span class="built_in">sizeof</span>(recvBuf), <span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span> (recvBytes &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    recvBuf[recvBytes] = <span class="string">&#x27;\0&#x27;</span>; <span class="comment">// 添加字符串结束符</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Received: %s\n&quot;</span>, recvBuf);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (recvBytes == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 连接已关闭</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Connection closed by peer.\n&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 接收出错</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Error in receiving data.\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送数据</span></span><br><span class="line"><span class="type">int</span> sendBytes = <span class="built_in">send</span>(_cSock, sendBuf, <span class="built_in">strlen</span>(sendBuf), <span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span> (sendBytes == SOCKET_ERROR) &#123;</span><br><span class="line">    <span class="comment">// 发送出错</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Error in sending data.\n&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Sent: %s\n&quot;</span>, sendBuf);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="9、关闭套接字和清理">9、关闭套接字和清理</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> n = (<span class="type">int</span>)g_clients.<span class="built_in">size</span>() - <span class="number">1</span>; n &gt;= <span class="number">0</span>; n--) &#123;</span><br><span class="line">        <span class="built_in">closesocket</span>(g_clients[n]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 7.关闭套接字closesocket</span></span><br><span class="line">    <span class="built_in">closesocket</span>(_sock);</span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _WIN32</span></span><br><span class="line">    <span class="comment">// 清除Windows socket环境</span></span><br><span class="line">    <span class="built_in">WSACleanup</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p>关闭套接字和清理 Windows Socket 环境。</p>
+<ol>
+<li><code>for</code> 循环关闭客户端套接字：
+<ul>
+<li><code>g_clients</code> 是一个存储客户端套接字的容器。</li>
+<li><code>g_clients.size() - 1</code> 表示最后一个客户端套接字的索引，即 <code>g_clients</code> 中的最后一个元素。</li>
+<li>从最后一个客户端套接字开始，逐个关闭套接字，直到第一个客户端套接字。</li>
+<li><code>closesocket</code> 函数用于关闭套接字，避免资源泄漏和占用。</li>
+</ul>
+</li>
+<li>关闭服务器监听套接字：
+<ul>
+<li><code>closesocket(_sock)</code> 用于关闭服务器的监听套接字，即关闭了服务器的网络监听服务。</li>
+</ul>
+</li>
+<li>清理 Windows Socket 环境：
+<ul>
+<li><code>WSACleanup()</code> 是在 Windows 环境下清理 Windows Socket 环境的函数。</li>
+<li>在使用 Windows Socket API 时，需要在程序结束时调用 <code>WSACleanup()</code> 来释放相关资源和清理环境。</li>
+</ul>
+</li>
+</ol>
+<h1>2、将vue项目部署在我们的HTTPServer</h1>
+<h3 id="1、创建-Vue-项目">1、创建 Vue 项目</h3>
+<p>使用 <code>create-vue</code> 来创建一个新的 Vue 项目并使用 Vite 进行构建。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm create vue@latest</span><br></pre></td></tr></table></figure>
+<p>按照提示完成项目设置。例如：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">✔ Project name: … my<span class="operator">-</span>vue<span class="operator">-</span>app</span><br><span class="line">✔ <span class="keyword">Add</span> TypeScript? … <span class="keyword">No</span></span><br><span class="line">✔ <span class="keyword">Add</span> JSX Support? … <span class="keyword">No</span></span><br><span class="line">✔ <span class="keyword">Add</span> Vue Router <span class="keyword">for</span> Single Page Application development? … Yes</span><br><span class="line">✔ <span class="keyword">Add</span> Pinia <span class="keyword">for</span> state management? … <span class="keyword">No</span></span><br><span class="line">✔ <span class="keyword">Add</span> Vitest <span class="keyword">for</span> Unit Testing? … <span class="keyword">No</span></span><br><span class="line">✔ <span class="keyword">Add</span> Cypress <span class="keyword">for</span> <span class="keyword">both</span> Unit <span class="keyword">and</span> <span class="keyword">End</span><span class="operator">-</span><span class="keyword">to</span><span class="operator">-</span><span class="keyword">End</span> testing? … <span class="keyword">No</span></span><br><span class="line">✔ <span class="keyword">Add</span> ESLint <span class="keyword">for</span> code quality? … <span class="keyword">No</span></span><br></pre></td></tr></table></figure>
+<p>进入项目目录并安装依赖：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> my-vue-app</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<h3 id="2、添加示例组件和路由">2、添加示例组件和路由</h3>
+<p><strong>创建一个新组件</strong></p>
+<p>在 <code>src/components</code> 目录下创建一个名为 <code>HelloWorld.vue</code> 的文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;&#123;&#123; message &#125;&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;HelloWorld&#x27;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      message: &#x27;Hello, Vue 3!&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">h1 &#123;</span><br><span class="line">  color: #42b983;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>配置路由</strong></p>
+<p>在 <code>src/router/index.js</code> 中添加路由配置：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createRouter, createWebHistory &#125; <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Home</span> <span class="keyword">from</span> <span class="string">&#x27;../views/Home.vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">HelloWorld</span> <span class="keyword">from</span> <span class="string">&#x27;../components/HelloWorld.vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">Home</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/hello&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;HelloWorld&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">HelloWorld</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="title function_">createRouter</span>(&#123;</span><br><span class="line">  <span class="attr">history</span>: <span class="title function_">createWebHistory</span>(),</span><br><span class="line">  routes</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>更新主页视图</strong></p>
+<p>在 <code>src/views/Home.vue</code> 中添加一个链接导航到 <code>HelloWorld</code> 组件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;home&quot;&gt;</span><br><span class="line">    &lt;img alt=&quot;Vue logo&quot; src=&quot;@/assets/logo.png&quot;&gt;</span><br><span class="line">    &lt;h1&gt;This is the Home Page&lt;/h1&gt;</span><br><span class="line">    &lt;router-link to=&quot;/hello&quot;&gt;Go to HelloWorld&lt;/router-link&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;Home&#x27;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">h1 &#123;</span><br><span class="line">  font-size: 2em;</span><br><span class="line">  margin-bottom: 20px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>构建和部署</strong></p>
+<p>构建生产版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<p>这会在 <code>dist</code> 目录下生成静态文件，将 <code>dist</code> 目录的内容复制到 HTTP 服务器可以访问的位置。</p>
+<h1>3、程序</h1>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _WIN32</span></span><br><span class="line">	<span class="meta">#<span class="keyword">define</span> WIN32_LEAN_AND_MEAN</span></span><br><span class="line">	<span class="meta">#<span class="keyword">define</span> _WINSOCK_DEPRECATED_NO_WARNINGS</span></span><br><span class="line">	<span class="meta">#<span class="keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line">	<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line">	<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;winSock2.h&gt;</span></span></span><br><span class="line">	<span class="meta">#<span class="keyword">pragma</span> comment(lib,<span class="string">&quot;ws2_32.lib&quot;</span>)</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">	<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line">	<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line">	<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">	<span class="meta">#<span class="keyword">define</span> SOCKET int</span></span><br><span class="line">	<span class="meta">#<span class="keyword">define</span> INVALID_SOCKET  (SOCKET)(~0)</span></span><br><span class="line">	<span class="meta">#<span class="keyword">define</span> SOCKET_ERROR            (-1)</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment(lib, <span class="string">&quot;Ws2_32.lib&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">handleClient</span><span class="params">(SOCKET client_socket)</span></span>;</span><br><span class="line"><span class="function">std::string <span class="title">handleHTTPRequest</span><span class="params">(<span class="type">const</span> std::string&amp; request, SOCKET client_socket)</span></span>;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">loadFileContent</span><span class="params">(<span class="type">const</span> std::string&amp; path, std::string&amp; content, std::string&amp; content_type)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理客户端连接</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">handleClient</span><span class="params">(SOCKET client_socket)</span> </span>&#123;</span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">10240</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="type">int</span> valread = <span class="number">0</span>;</span><br><span class="line">    std::string request;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ((valread = <span class="built_in">recv</span>(client_socket, buffer, <span class="built_in">sizeof</span>(buffer) - <span class="number">1</span>, <span class="number">0</span>)) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        buffer[valread] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">        request.<span class="built_in">append</span>(buffer);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 检查是否接收到完整的HTTP请求（以\r\n\r\n结尾）</span></span><br><span class="line">        <span class="keyword">if</span> (request.<span class="built_in">find</span>(<span class="string">&quot;\r\n\r\n&quot;</span>) != std::string::npos) &#123;</span><br><span class="line">            std::string response = <span class="built_in">handleHTTPRequest</span>(request, client_socket);</span><br><span class="line">            <span class="built_in">send</span>(client_socket, response.<span class="built_in">c_str</span>(), response.<span class="built_in">size</span>(), <span class="number">0</span>);</span><br><span class="line">            request.<span class="built_in">clear</span>(); <span class="comment">// 清空已处理的请求</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (valread &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;客户端&lt;Socket=%d&gt;已退出，任务结束。\n&quot;</span>, client_socket);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理HTTP请求并生成响应</span></span><br><span class="line"><span class="function">std::string <span class="title">handleHTTPRequest</span><span class="params">(<span class="type">const</span> std::string&amp; request, SOCKET client_socket)</span> </span>&#123;</span><br><span class="line">    <span class="function">std::istringstream <span class="title">request_stream</span><span class="params">(request)</span></span>;</span><br><span class="line">    std::string method, path, version;</span><br><span class="line">    request_stream &gt;&gt; method &gt;&gt; path &gt;&gt; version;</span><br><span class="line"></span><br><span class="line">    std::ostringstream response_stream;</span><br><span class="line">    <span class="keyword">if</span> (method == <span class="string">&quot;GET&quot;</span>) &#123;</span><br><span class="line">        std::string response_body;</span><br><span class="line">        std::string content_type;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据请求路径查找文件并生成响应内容</span></span><br><span class="line">        <span class="keyword">if</span> (path == <span class="string">&quot;/&quot;</span>) &#123;</span><br><span class="line">            path = <span class="string">&quot;/index.html&quot;</span>; <span class="comment">// 默认首页</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">loadFileContent</span>(<span class="string">&quot;./dist&quot;</span> + path, response_body, content_type)) &#123; <span class="comment">// 将dist目录作为根目录</span></span><br><span class="line">            response_stream &lt;&lt; <span class="string">&quot;HTTP/1.1 200 OK\r\n&quot;</span>;</span><br><span class="line">            response_stream &lt;&lt; <span class="string">&quot;Content-Type: &quot;</span> &lt;&lt; content_type &lt;&lt; <span class="string">&quot;\r\n&quot;</span>;</span><br><span class="line">            response_stream &lt;&lt; <span class="string">&quot;Content-Length: &quot;</span> &lt;&lt; response_body.<span class="built_in">size</span>() &lt;&lt; <span class="string">&quot;\r\n&quot;</span>;</span><br><span class="line">            response_stream &lt;&lt; <span class="string">&quot;Connection: close\r\n&quot;</span>;</span><br><span class="line">            response_stream &lt;&lt; <span class="string">&quot;\r\n&quot;</span>;</span><br><span class="line">            response_stream &lt;&lt; response_body;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            response_stream &lt;&lt; <span class="string">&quot;HTTP/1.1 404 Not Found\r\n&quot;</span>;</span><br><span class="line">            response_stream &lt;&lt; <span class="string">&quot;Content-Type: text/html\r\n&quot;</span>;</span><br><span class="line">            response_stream &lt;&lt; <span class="string">&quot;Connection: close\r\n&quot;</span>;</span><br><span class="line">            response_stream &lt;&lt; <span class="string">&quot;\r\n&quot;</span>;</span><br><span class="line">            response_stream &lt;&lt; <span class="string">&quot;&lt;html&gt;&lt;body&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (method == <span class="string">&quot;POST&quot;</span>) &#123;</span><br><span class="line">        std::string headers;</span><br><span class="line">        std::string line;</span><br><span class="line">        <span class="type">size_t</span> content_length = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 读取头部字段</span></span><br><span class="line">        <span class="keyword">while</span> (std::<span class="built_in">getline</span>(request_stream, line) &amp;&amp; line != <span class="string">&quot;\r&quot;</span>) &#123;</span><br><span class="line">            headers += line + <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">            <span class="keyword">if</span> (line.<span class="built_in">find</span>(<span class="string">&quot;Content-Length:&quot;</span>) != std::string::npos) &#123;</span><br><span class="line">                content_length = std::<span class="built_in">stoul</span>(line.<span class="built_in">substr</span>(<span class="number">16</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 读取消息体</span></span><br><span class="line">        std::string body;</span><br><span class="line">        <span class="keyword">if</span> (content_length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            body.<span class="built_in">resize</span>(content_length);</span><br><span class="line">            request_stream.<span class="built_in">read</span>(&amp;body[<span class="number">0</span>], content_length);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 生成响应</span></span><br><span class="line">        response_stream &lt;&lt; <span class="string">&quot;HTTP/1.1 200 OK\r\n&quot;</span>;</span><br><span class="line">        response_stream &lt;&lt; <span class="string">&quot;Content-Type: text/html\r\n&quot;</span>;</span><br><span class="line">        response_stream &lt;&lt; <span class="string">&quot;Connection: close\r\n&quot;</span>;</span><br><span class="line">        response_stream &lt;&lt; <span class="string">&quot;\r\n&quot;</span>;</span><br><span class="line">        response_stream &lt;&lt; <span class="string">&quot;&lt;html&gt;&lt;body&gt;&lt;h1&gt;POST data received&lt;/h1&gt;&lt;pre&gt;&quot;</span> &lt;&lt; body &lt;&lt; <span class="string">&quot;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        response_stream &lt;&lt; <span class="string">&quot;HTTP/1.1 405 Method Not Allowed\r\n&quot;</span>;</span><br><span class="line">        response_stream &lt;&lt; <span class="string">&quot;Content-Type: text/html\r\n&quot;</span>;</span><br><span class="line">        response_stream &lt;&lt; <span class="string">&quot;Connection: close\r\n&quot;</span>;</span><br><span class="line">        response_stream &lt;&lt; <span class="string">&quot;\r\n&quot;</span>;</span><br><span class="line">        response_stream &lt;&lt; <span class="string">&quot;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Method Not Allowed&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> response_stream.<span class="built_in">str</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载文件内容并确定内容类型</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">loadFileContent</span><span class="params">(<span class="type">const</span> std::string&amp; path, std::string&amp; content, std::string&amp; content_type)</span> </span>&#123;</span><br><span class="line">    <span class="function">std::ifstream <span class="title">file</span><span class="params">(path, std::ios::binary)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (!file.<span class="built_in">is_open</span>()) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    std::ostringstream content_stream;</span><br><span class="line">    content_stream &lt;&lt; file.<span class="built_in">rdbuf</span>();</span><br><span class="line">    content = content_stream.<span class="built_in">str</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 确定内容类型</span></span><br><span class="line">    <span class="keyword">if</span> (path.<span class="built_in">ends_with</span>(<span class="string">&quot;.html&quot;</span>)) &#123;</span><br><span class="line">        content_type = <span class="string">&quot;text/html&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (path.<span class="built_in">ends_with</span>(<span class="string">&quot;.css&quot;</span>)) &#123;</span><br><span class="line">        content_type = <span class="string">&quot;text/css&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (path.<span class="built_in">ends_with</span>(<span class="string">&quot;.js&quot;</span>)) &#123;</span><br><span class="line">        content_type = <span class="string">&quot;application/javascript&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (path.<span class="built_in">ends_with</span>(<span class="string">&quot;.jpg&quot;</span>) || path.<span class="built_in">ends_with</span>(<span class="string">&quot;.jpeg&quot;</span>)) &#123;</span><br><span class="line">        content_type = <span class="string">&quot;image/jpeg&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (path.<span class="built_in">ends_with</span>(<span class="string">&quot;.png&quot;</span>)) &#123;</span><br><span class="line">        content_type = <span class="string">&quot;image/png&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        content_type = <span class="string">&quot;application/octet-stream&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">std::vector&lt;SOCKET&gt; g_clients;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _WIN32</span></span><br><span class="line">    WORD ver = <span class="built_in">MAKEWORD</span>(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">    WSADATA dat;</span><br><span class="line">    <span class="built_in">WSAStartup</span>(ver, &amp;dat);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="comment">// 1.建立socket套接字</span></span><br><span class="line">    SOCKET _sock = <span class="built_in">socket</span>(AF_INET, SOCK_STREAM, IPPROTO_TCP);</span><br><span class="line">    <span class="comment">// 2.bind绑定用于接收客户端连接的网络端口</span></span><br><span class="line">    sockaddr_in _sin = &#123;&#125;;</span><br><span class="line">    _sin.sin_family = AF_INET;</span><br><span class="line">    _sin.sin_port = <span class="built_in">htons</span>(<span class="number">4567</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _WIN32</span></span><br><span class="line">    _sin.sin_addr.S_un.S_addr = INADDR_ANY;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    _sin.sin_addr.s_addr = INADDR_ANY;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">if</span> (SOCKET_ERROR == <span class="built_in">bind</span>(_sock, (sockaddr*)&amp;_sin, <span class="built_in">sizeof</span>(_sin))) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;绑定网络端口失败...\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;绑定网络端口成功...\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 3.listen监听网络端口</span></span><br><span class="line">    <span class="keyword">if</span> (SOCKET_ERROR == <span class="built_in">listen</span>(_sock, <span class="number">5</span>)) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;监听网络端口失败...\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;监听网络端口成功...\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        fd_set fdRead; <span class="comment">// 描述符集合</span></span><br><span class="line">        fd_set fdWrite;</span><br><span class="line">        fd_set fdExp;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">FD_ZERO</span>(&amp;fdRead); <span class="comment">// 清理集合</span></span><br><span class="line">        <span class="built_in">FD_ZERO</span>(&amp;fdWrite);</span><br><span class="line">        <span class="built_in">FD_ZERO</span>(&amp;fdExp);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">FD_SET</span>(_sock, &amp;fdRead);<span class="comment">// 将描述符加入集合中</span></span><br><span class="line">        <span class="built_in">FD_SET</span>(_sock, &amp;fdWrite);</span><br><span class="line">        <span class="built_in">FD_SET</span>(_sock, &amp;fdExp);</span><br><span class="line">        SOCKET maxSock = _sock;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> n = (<span class="type">int</span>)g_clients.<span class="built_in">size</span>() - <span class="number">1</span>; n &gt;= <span class="number">0</span>; n--) &#123;</span><br><span class="line">            <span class="built_in">FD_SET</span>(g_clients[n], &amp;fdRead);</span><br><span class="line">            <span class="keyword">if</span> (maxSock &lt; g_clients[n]) &#123;</span><br><span class="line">                maxSock = g_clients[n];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        timeval t = &#123; <span class="number">0</span>, <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="type">int</span> ret = <span class="built_in">select</span>(maxSock + <span class="number">1</span>, &amp;fdRead, &amp;fdWrite, &amp;fdExp, &amp;t);</span><br><span class="line">        <span class="keyword">if</span> (ret &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;select任务结束。\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 判断描述符是否在集合中</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">FD_ISSET</span>(_sock, &amp;fdRead)) &#123;</span><br><span class="line">            <span class="built_in">FD_CLR</span>(_sock, &amp;fdRead);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// accept等待接受客户端连接</span></span><br><span class="line">            sockaddr_in clientAddr = &#123;&#125;;</span><br><span class="line">            <span class="type">int</span> nAddrLen = <span class="built_in">sizeof</span>(sockaddr_in);</span><br><span class="line">            SOCKET _cSock = INVALID_SOCKET;</span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _WIN32</span></span><br><span class="line">            _cSock = <span class="built_in">accept</span>(_sock, (sockaddr*)&amp;clientAddr, &amp;nAddrLen);</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">            _cSock = <span class="built_in">accept</span>(_sock, (sockaddr*)&amp;clientAddr, (<span class="type">socklen_t</span>*)&amp;nAddrLen);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">            <span class="keyword">if</span> (INVALID_SOCKET == _cSock) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;接收到无效客户端SOCKET...\n&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                g_clients.<span class="built_in">push_back</span>(_cSock);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;新客户端加入：socket = %d, IP = %s \n&quot;</span>, (<span class="type">int</span>)_cSock, <span class="built_in">inet_ntoa</span>(clientAddr.sin_addr));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> n = (<span class="type">int</span>)g_clients.<span class="built_in">size</span>() - <span class="number">1</span>; n &gt;= <span class="number">0</span>; n--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">FD_ISSET</span>(g_clients[n], &amp;fdRead)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="number">-1</span> == <span class="built_in">handleClient</span>(g_clients[n])) &#123;</span><br><span class="line">                    <span class="keyword">auto</span> iter = g_clients.<span class="built_in">begin</span>() + n;</span><br><span class="line">                    <span class="keyword">if</span> (iter != g_clients.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                        g_clients.<span class="built_in">erase</span>(iter);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> n = (<span class="type">int</span>)g_clients.<span class="built_in">size</span>() - <span class="number">1</span>; n &gt;= <span class="number">0</span>; n--) &#123;</span><br><span class="line">        <span class="built_in">closesocket</span>(g_clients[n]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 7.关闭套接字closesocket</span></span><br><span class="line">    <span class="built_in">closesocket</span>(_sock);</span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _WIN32</span></span><br><span class="line">    <span class="comment">// 清除Windows socket环境</span></span><br><span class="line">    <span class="built_in">WSACleanup</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;已退出。\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
     
 
@@ -338,7 +531,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://HZR0709.github.io/2024/05/18/Cpp-progranming/" title="C++面向对象编程" target="_blank">https://HZR0709.github.io/2024/05/18/Cpp-progranming/</a>
+          <a href="https://HZR0709.github.io/2024/06/11/HTTP服务器/" title="HTTP服务器" target="_blank">https://HZR0709.github.io/2024/06/11/HTTP服务器/</a>
         </li>
         
         <li>
@@ -360,7 +553,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C++、Socket</a>
         		</li>
       		
 		</ul>
@@ -416,7 +609,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://hzr0709.github.io/2024/05/18/Cpp-progranming/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://hzr0709.github.io/2024/06/11/HTTP%E6%9C%8D%E5%8A%A1%E5%99%A8/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -431,18 +624,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2024/05/22/Python-progranming/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2024/06/12/An%20eight-part%20essay/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Python 学习笔记
+          八股文
         
       </div>
     </a>
   
   
-    <a href="/2024/05/17/Hexo-Create-Blog/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hexo系列 搭建博客网站</div>
+    <a href="/2024/05/22/Python-progranming/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python 学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
