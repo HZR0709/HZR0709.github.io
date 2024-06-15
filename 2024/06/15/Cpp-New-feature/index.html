@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://HZR0709.github.io">
-  <title>个人博客</title>
+  <title>C++新特性 | 个人博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="心有所向，无问东西">
-<meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="https://hzr0709.github.io/about.html">
+  <meta name="description" content="文章介绍了一些的C++新特性，当然，这并非全部。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++新特性">
+<meta property="og:url" content="https://hzr0709.github.io/2024/06/15/Cpp-New-feature/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="心有所向，无问东西">
+<meta property="og:description" content="文章介绍了一些的C++新特性，当然，这并非全部。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-17T09:05:20.681Z">
-<meta property="article:modified_time" content="2024-05-17T09:04:43.975Z">
+<meta property="article:published_time" content="2024-06-15T01:37:13.000Z">
+<meta property="article:modified_time" content="2024-06-15T01:51:24.108Z">
 <meta property="article:author" content="hzr">
-<meta property="article:tag" content="hzr">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
@@ -226,12 +226,113 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-Cpp-New-feature" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+  
+  
+    <h1 class="article-title" itemprop="name">
+      C++新特性
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2024/06/15/Cpp-New-feature/" class="archive-article-date">
+        <time datetime="2024-06-15T01:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-15</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">4分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
   <div class="article-entry" itemprop="articleBody">
     
-    
+    <p>文章介绍了一些的C++新特性，当然，这并非全部。</p>
+<span id="more"></span>
+<h2 id="C-17">C++17</h2>
+<p>C++17引入了结构化绑定（Structured Bindings），使得可以将结构体、数组或元组的元素直接解包到独立的变量中。这在以前需要手动解包的情况下非常有用。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::tuple&lt;<span class="type">int</span>, <span class="type">double</span>, std::string&gt; tpl = &#123;<span class="number">1</span>, <span class="number">2.3</span>, <span class="string">&quot;text&quot;</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> [i, d, s] = tpl; <span class="comment">// i=1, d=2.3, s=&quot;text&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-if和switch的初始化语句">2. if和switch的初始化语句</h3>
+<p>在C++17中，可以在if和switch语句中直接包含初始化语句，这样可以提高代码的可读性和简洁性。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">auto</span> it = myMap.<span class="built_in">find</span>(key); it != myMap.<span class="built_in">end</span>()) &#123;</span><br><span class="line">    <span class="comment">// 使用 it</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-std-optional">3. std::optional</h3>
+<p><code>std::optional</code> 提供了一种类型安全的方式来表示一个值可能存在或不存在，避免了使用指针或特殊值表示空值的问题。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::optional&lt;<span class="type">int</span>&gt; maybeInt = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">if</span> (maybeInt) &#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Value: &quot;</span> &lt;&lt; *maybeInt &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-std-variant">4. std::variant</h3>
+<p><code>std::variant</code> 是一个类型安全的联合体，可以存储多个类型中的一个。这使得可以更方便地处理多种类型的值。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::variant&lt;<span class="type">int</span>, <span class="type">float</span>, std::string&gt; v;</span><br><span class="line">v = <span class="number">42</span>;</span><br><span class="line">v = <span class="string">&quot;hello&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="5-std-any">5. std::any</h3>
+<p><code>std::any</code> 可以存储任意类型的值，并在运行时确定类型。这对于需要在运行时处理各种类型的情况非常有用。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::any a = <span class="number">42</span>;</span><br><span class="line">a = std::<span class="built_in">string</span>(<span class="string">&quot;hello&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="6-std-filesystem">6. std::filesystem</h3>
+<p><code>std::filesystem</code> 提供了跨平台的文件系统操作，使得文件和目录的管理更加方便。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;filesystem&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> fs = std::filesystem;</span><br><span class="line"></span><br><span class="line">fs::<span class="built_in">create_directory</span>(<span class="string">&quot;example&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="7-内联变量">7. 内联变量</h3>
+<p>内联变量允许在头文件中定义变量，而无需担心重复定义的问题。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="type">int</span> myVar = <span class="number">42</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="8-constexpr-lambda">8. constexpr lambda</h3>
+<p>Lambda 表达式现在可以是 <code>constexpr</code>，允许在编译时进行计算，提高了程序的性能和效率。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> add = [](<span class="type">int</span> a, <span class="type">int</span> b) <span class="keyword">constexpr</span> &#123; <span class="keyword">return</span> a + b; &#125;;</span><br><span class="line"><span class="built_in">static_assert</span>(<span class="built_in">add</span>(<span class="number">1</span>, <span class="number">2</span>) == <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="9-折叠表达式">9. 折叠表达式</h3>
+<p>折叠表达式（Fold Expressions）简化了对可变参数模板的操作，使得模板的使用更加灵活和方便。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">sum</span><span class="params">(Args... args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (args + ...); <span class="comment">// 左折叠</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="10-其他改进">10. 其他改进</h3>
+<ul>
+<li><strong>模板参数推导</strong>：类模板可以根据构造函数的参数自动推导模板参数，减少了模板使用时的冗余。</li>
+<li><strong>增强的<code>constexpr</code></strong>：更多的标准库函数现在是 <code>constexpr</code>，如 <code>std::strlen</code>，可以在编译时进行计算。</li>
+<li><strong><code>std::byte</code></strong> 类型：提供了一种类型安全的字节表示，避免了直接操作原始字节的问题。</li>
+</ul>
+<h2 id="C-20">C++20</h2>
+<h2 id="模块化编程-Modules">模块化编程 (Modules)</h2>
+<p>C++20引入了模块化编程的概念，这是对传统的#include预处理器指令的一种更现代化的替代方式。模块化编程使得代码更加模块化和可重用，同时提高了构建速度。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// math.h</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">module</span> math;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">export</span> <span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"><span class="keyword">import</span> math;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> result = <span class="built_in">add</span>(<span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="概念-Concepts">概念 (Concepts)</h2>
+<p>概念是对模板类型的约束，它们使得模板代码更加清晰并提供更好的错误信息。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">concept</span> Arithmetic = std::is_arithmetic_v&lt;T&gt;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;Arithmetic T&gt;</span><br><span class="line"><span class="function">T <span class="title">add</span><span class="params">(T a, T b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="范围式for循环的初始化语句">范围式for循环的初始化语句</h2>
+<p>C++20允许在范围式for循环中使用初始化语句，使得代码更加简洁。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; numbers = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> it = numbers.<span class="built_in">begin</span>(); <span class="keyword">auto</span>&amp; num : numbers) &#123;</span><br><span class="line">    <span class="comment">// 使用it和num</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="常量求值-Constexpr">常量求值 (Constexpr)</h2>
+<p>C++20扩展了constexpr的能力，允许在编译时计算更复杂的表达式和逻辑。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="type">int</span> <span class="title">factorial</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> n * <span class="built_in">factorial</span>(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">constexpr</span> <span class="type">int</span> result = <span class="built_in">factorial</span>(<span class="number">5</span>);  <span class="comment">// 在编译时计算阶乘</span></span><br></pre></td></tr></table></figure>
+<h2 id="类型特征-Type-Traits">类型特征 (Type Traits)</h2>
+<p>C++20引入了一些新的类型特征，例如is_nothrow_convertible_v和is_invocable_v，用于检查类型的特性。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">if</span> <span class="title">constexpr</span> <span class="params">(std::is_nothrow_convertible_v&lt;<span class="type">int</span>, <span class="type">double</span>&gt;)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 确保int到double的转换不会抛出异常</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Calendar和Timezone库">Calendar和Timezone库</h2>
+<p>C++20新增了对日期、时间和时区的支持，使得处理日期和时间更加方便和可靠。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> now = std::chrono::system_clock::<span class="built_in">now</span>();</span><br><span class="line">    std::cout &lt;&lt; std::chrono::format(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, now) &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     
 
     
@@ -277,7 +378,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://HZR0709.github.io/about.html" title="" target="_blank">https://HZR0709.github.io/about.html</a>
+          <a href="https://HZR0709.github.io/2024/06/15/Cpp-New-feature/" title="C++新特性" target="_blank">https://HZR0709.github.io/2024/06/15/Cpp-New-feature/</a>
         </li>
         
         <li>
@@ -294,6 +395,17 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
@@ -344,7 +456,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://hzr0709.github.io/about.html" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://hzr0709.github.io/2024/06/15/Cpp-New-feature/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -356,6 +468,16 @@
   </div>
 </article>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2024/06/12/An%20eight-part%20essay/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">八股文</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 <aside class="wrap-side-operation">
@@ -425,7 +547,7 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
