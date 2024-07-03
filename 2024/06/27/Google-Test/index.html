@@ -6,23 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://HZR0709.github.io">
-  <title>个人博客</title>
+  <title>Google Test | 个人博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="hzr">
-    <meta name="description" content="心有所向，无问东西"> -->
-  
-  <meta name="description" content="心有所向，无问东西">
-<meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="https://hzr0709.github.io/index.html">
+  <meta name="description" content="GoogleTest是一款由Google开发的C++测试框架，具有快速、简洁、可靠、跨平台等优点，可以帮助C++开发人员更好的测试代码。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google Test">
+<meta property="og:url" content="https://hzr0709.github.io/2024/06/27/Google-Test/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="心有所向，无问东西">
+<meta property="og:description" content="GoogleTest是一款由Google开发的C++测试框架，具有快速、简洁、可靠、跨平台等优点，可以帮助C++开发人员更好的测试代码。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-27T13:29:43.000Z">
+<meta property="article:modified_time" content="2024-06-27T14:37:24.765Z">
 <meta property="article:author" content="hzr">
-<meta property="article:tag" content="hzr">
+<meta property="article:tag" content="GoogleTest">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
@@ -228,25 +226,25 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-Google-Test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Google-Test" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/06/27/Google-Test/" target="_blank">Google Test</a>
-  
+    <h1 class="article-title" itemprop="name">
+      Google Test
     </h1>
   
 
 
   
   
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2024/06/27/Google-Test/" class="archive-article-date">
         <time datetime="2024-06-27T13:29:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-27</time>
 </a>
@@ -254,6 +252,27 @@
   
   
     
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.3k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">5分</span>
+    </span>
+  </span>
+</div>
+
 
   
   </header>
@@ -261,13 +280,145 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>GoogleTest是一款由Google开发的C++测试框架，具有快速、简洁、可靠、跨平台等优点，可以帮助C++开发人员更好的测试代码。</p>
-    
-    <a class="article-more-a" href="/2024/06/27/Google-Test/#more">more >></a>
-    
-    
+<span id="more"></span>
+<h1>GoogleTest测试框架使用</h1>
+<p>使用前请添加#include &lt;gtest/gtest.h&gt;</p>
+<p>assertion(断言)的使用中分别有<code>EXPECT_</code>和<code>ASSERT_</code>的变体形式，两者的区别在于当代码测试失败时，<code>EXPECT_</code>生成非致命失败，并允许当前函数继续运行，而<code>ASSERT_</code>生成致命失败，并终止当前函数。此外，所有断言都支持通过“&lt;&lt;”操作符自定义失败提示信息，如下所示，“&lt;&lt;”操作符的使用类似于&quot;cout&lt;&lt;&quot;输出控制台相关信息。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 任何可以流入ostream 的内容都可以流入断言宏中，直接类比cout的使用即可</span></span><br><span class="line"><span class="built_in">EXPECT_TRUE</span>(my_condition) &lt;&lt; <span class="string">&quot;自定义提示信息&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Boolean-Conditions-bool类型判断">Boolean Conditions(bool类型判断)</h3>
+<p>本部分的断言可以测试bool类型的条件</p>
+<p>EXPECT_FALSE( condition )</p>
+<p>ASSERT_FALSE( condition )</p>
+<p><strong>用来验证condition是否为假。</strong></p>
+<p>EXPECT_TRUE( condition )</p>
+<p>ASSERT_TRUE( condition )</p>
+<p><strong>用来验证condition是否为真。</strong></p>
+<h3 id="Binary-Comparison-值比较">Binary Comparison(值比较)</h3>
+<p>本部分断言用来比较两个值，值也可以是string类型。</p>
+<p>EXPECT_EQ( val1 , val2 )</p>
+<p>ASSERT_EQ( val1 , val2 )</p>
+<p><strong>用来验证val1和val2是否相等。</strong></p>
+<p>EXPECT_NE( val1 , val2 )</p>
+<p>ASSERT_NE( val1 , val2 )</p>
+<p><strong>用来验证val1和val2是否不相等。</strong></p>
+<p>EXPECT_LT( val1 , val2 )</p>
+<p>ASSERT_LT( val1 , val2 )</p>
+<p><strong>用来验证val1&lt; val2是否成立。</strong></p>
+<p>EXPECT_LE( val1 , val2 )</p>
+<p>ASSERT_LE( val1 , val2 )</p>
+<p><strong>用来验证val1&lt;= val2是否成立。</strong></p>
+<p>EXPECT_GT( val1 , val2 )</p>
+<p>ASSERT_GT( val1 , val2 )</p>
+<p><strong>用来验证val1&gt; val2是否成立。</strong></p>
+<p>EXPECT_GE( val1 , val2 )</p>
+<p>ASSERT_GE( val1 , val2 )</p>
+<p><strong>用来验证val1&gt;= val2是否成立。</strong></p>
+<h3 id="String-Comparison-字符串比较">String Comparison(字符串比较)</h3>
+<p>本部分断言用来比较两个C strings，如果比较两个string对象，请使用EXPECT_EQ和EXPECT_NE。C strings是字符数组的形式，string是C++标准库提供的字符串类。</p>
+<p>EXPECT_STREQ( str1 , str2 )</p>
+<p>ASSERT_STREQ( str1 , str2 )</p>
+<p><strong>用来验证两个C strings是否有相同的内容。</strong></p>
+<p>EXPECT_STRNE( str1 , str2 )</p>
+<p>ASSERT_STRNE( str1 , str2 )</p>
+<p><strong>用来验证两个C strings是否有不同的内容。</strong></p>
+<p>EXPECT_STRCASEEQ( str1 , str2 )</p>
+<p>ASSERT_STRCASEEQ( str1 , str2 )</p>
+<p><strong>用来验证两个C strings是否有相同的内容，忽略大小写。</strong></p>
+<p>EXPECT_STRCASENE( str1 , str2 )</p>
+<p>ASSERT_STRCASENE( str1 , str2 )</p>
+<p><strong>用来验证两个C strings是否有不同的内容，忽略大小写。</strong></p>
+<h3 id="Floating-Point-Comparison-浮点型数值比较">Floating_Point Comparison(浮点型数值比较)</h3>
+<p>需注意的是浮点型数值存在舍入误差，无法被精确表示，因此两浮点型数值相等的情况十分罕见，使用时需仔细选择误差范围，GoogleTest提供的误差范围是基于ULPs的，1个ULP表示两个连续的浮点数之间的最小距离，取决于浮点数的精度。</p>
+<p>EXPECT_FLOAT_EQ( val1 , val2 )</p>
+<p>ASSERT_FLOAT_EQ( val1 , val2 )</p>
+<p><strong>用来验证浮点型数值val1和val2是否近似相等(4个ULPS)。</strong></p>
+<p>EXPECT_DOUBLE_EQ( val1 , val2 )</p>
+<p>ASSERT_DOUBLE_EQ( val1 , val2 )</p>
+<p><strong>用来验证double数值val1和val2是否近似相等(4个ULPS)。</strong></p>
+<p>EXPECT_NEAR( val1 , val2 , abs_error )</p>
+<p>ASSERT_NEAR( val1 , val2 , abs_error )</p>
+<p><strong>用来验证数值val1和val2的差值没有超过绝对误差abs_error。</strong></p>
+<h3 id="Exception-Assertions-异常抛出检测">Exception Assertions(异常抛出检测)</h3>
+<p>本部分用来验证代码片段是否抛出异常，被测试的代码片段可以是复合语句，如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">EXPECT_NO_THROW</span>(&#123;</span><br><span class="line">  <span class="type">int</span> n = <span class="number">5</span>;            / 测试内部这些代码运行是否会抛出异常</span><br><span class="line">  <span class="built_in">DoSomething</span>(&amp;n);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>EXPECT_THROW( statement , exception_type )</p>
+<p>ASSERT_THROW( statement , exception_type )</p>
+<p><strong>用来验证某个语句(statement)是否抛出指定类型(exception_type)的异常。</strong></p>
+<p>EXPECT_ANY_THROW( statement )</p>
+<p>ASSERT_ANY_THROW( statement )</p>
+<p><strong>用来验证某个语句(statement)是否抛出任何类型的异常。</strong></p>
+<p>EXPECT_NO_THROW( statement )</p>
+<p>ASSERT_NO_THROW( statement )</p>
+<p><strong>用来验证某个语句(statement)是否没有抛出任何类型的异常。</strong></p>
+<h3 id="测试示例-vs2022">测试示例(vs2022)</h3>
+<p>1、使用TEST()宏来定义和命名一个测试函数，这些都是普通的C++函数，不返回值。</p>
+<p>2、在这个测试函数中，除了任何你想包含的有效的C++语句之外，还可以使用各种GoogleTest的断言来检查值。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">TEST</span>(TestSuiteName, TestName) &#123;</span><br><span class="line">  ... 测试主体 ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>TEST()中参数TestSuiteName表示测试套件的名称，TestName表示测试套件中的测试名称，这两个参数名称必须是有效的C++标识符，并且它们不应该包含任何下划线（_）。测试的完整名称包括其所属的测试套件和其具体的测试名称，来自不同测试套件的测试可以具有相同的名称。</p>
+<p>GoogleTest按测试套件对测试结果进行分组，因此逻辑相关的测试应该放在同一个测试套件中；换句话说，它们的TEST()的第一个参数应该是相同的。</p>
+<h4 id="首先新建一个GoogleTest项目，测试项目配置按照默认即可。">首先新建一个GoogleTest项目，测试项目配置按照默认即可。</h4>
+<p>可以同时编写多个测试名称的函数</p>
+<p><strong>pch.cpp</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;pch.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">vectorExample</span><span class="params">(std::ostream&amp; os)</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; v = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> &#125;;</span><br><span class="line">    v.<span class="built_in">push_back</span>(<span class="number">6</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; el : v) os &lt;&lt; el &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    os &lt;&lt; std::endl;</span><br><span class="line">    v.<span class="built_in">pop_back</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; el : v) os &lt;&lt; el &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    os &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>test.cpp</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;pch.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 帮助函数比较预期和实际输出</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">compareOutput</span><span class="params">(<span class="type">void</span> (*exampleFunc)(std::ostream&amp;), <span class="type">const</span> std::string&amp; expected)</span> </span>&#123;</span><br><span class="line">    std::ostringstream oss;</span><br><span class="line">    <span class="built_in">exampleFunc</span>(oss);</span><br><span class="line">    <span class="built_in">EXPECT_EQ</span>(oss.<span class="built_in">str</span>(), expected);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Vector Tests</span></span><br><span class="line"><span class="built_in">TEST</span>(VectorTest, HandlesOutput) &#123;</span><br><span class="line">    std::string expected = <span class="string">&quot;1 2 3 4 5 6 \n1 2 3 4 5 \n&quot;</span>;</span><br><span class="line">    <span class="built_in">compareOutput</span>(vectorExample, expected);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     
 
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          hzr
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://HZR0709.github.io/2024/06/27/Google-Test/" title="Google Test" target="_blank">https://HZR0709.github.io/2024/06/27/Google-Test/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
     
 
   </div>
@@ -288,16 +439,76 @@
     
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/06/27/Google-Test/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://hzr0709.github.io/2024/06/27/Google-Test/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2024/06/25/Decision-Tree-and-Random-Forest/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Decision Tree and Random Forest</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -318,793 +529,14 @@
 
 
 
-  
-    <article id="post-Decision-Tree-and-Random-Forest" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/06/25/Decision-Tree-and-Random-Forest/" target="_blank">Decision Tree and Random Forest</a>
-  
-    </h1>
-  
 
 
-  
-  
-<a href="/2024/06/25/Decision-Tree-and-Random-Forest/" class="archive-article-date">
-        <time datetime="2024-06-25T10:26:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-25</time>
-</a>
 
-  
-  
-    
 
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>决策树（decision tree）是一种基本的分类与回归方法，本文主要讨论用于分类的决策树。决策树学习通常包括三个步骤：特征选择，决策树的生成和决策树的修剪。而随机森林则是由多个决策树所构成的一种分类器，更准确的说，随机森林是由多个弱分类器组合形成的强分类器。</p>
-    
-    <a class="article-more-a" href="/2024/06/25/Decision-Tree-and-Random-Forest/#more">more >></a>
-    
-    
 
-    
 
-    
 
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">DecisionTree， RandomForest</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/06/25/Decision-Tree-and-Random-Forest/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-TCP-IP-Stack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/06/15/TCP-IP-Stack/" target="_blank">TCP/IP协议网络编程</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/06/15/TCP-IP-Stack/" class="archive-article-date">
-        <time datetime="2024-06-15T08:05:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-15</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>逐步实现模拟TCP/IP协议栈的功能。</p>
-    
-    <a class="article-more-a" href="/2024/06/15/TCP-IP-Stack/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C++，TCP/IP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/06/15/TCP-IP-Stack/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Cpp-New-feature" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/06/15/Cpp-New-feature/" target="_blank">C++新特性</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/06/15/Cpp-New-feature/" class="archive-article-date">
-        <time datetime="2024-06-15T01:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-15</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>文章介绍了一些的C++新特性，当然，这并非全部。</p>
-    
-    <a class="article-more-a" href="/2024/06/15/Cpp-New-feature/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/06/15/Cpp-New-feature/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-An eight-part essay" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/06/12/An%20eight-part%20essay/" target="_blank">八股文</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/06/12/An%20eight-part%20essay/" class="archive-article-date">
-        <time datetime="2024-06-11T16:35:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>面试八股</p>
-    
-    <a class="article-more-a" href="/2024/06/12/An%20eight-part%20essay/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/06/12/An%20eight-part%20essay/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HTTP服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/06/11/HTTP%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_blank">HTTP服务器</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/06/11/HTTP%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="archive-article-date">
-        <time datetime="2024-06-11T14:34:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-11</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>本文构建了一个十分简易的HTTPServer，实现http解析与应答，能够进行简单的网页部署</p>
-    
-    <a class="article-more-a" href="/2024/06/11/HTTP%E6%9C%8D%E5%8A%A1%E5%99%A8/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C++、Socket</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/06/11/HTTP%E6%9C%8D%E5%8A%A1%E5%99%A8/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python-progranming" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/05/22/Python-progranming/" target="_blank">Python 学习笔记</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/05/22/Python-progranming/" class="archive-article-date">
-        <time datetime="2024-05-22T12:17:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-22</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>Python基础知识总结</p>
-    
-    <a class="article-more-a" href="/2024/05/22/Python-progranming/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/05/22/Python-progranming/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Cpp-progranming" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/05/18/Cpp-progranming/" target="_blank">C++面向对象编程</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/05/18/Cpp-progranming/" class="archive-article-date">
-        <time datetime="2024-05-17T20:06:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-18</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>利用模板机制可以显著减少冗余信息，能大幅度的结约程序代码，进一步提高面向对象程序的可重用性和可维护性。模板是实现代码重用机制的一种工具，它可以实现类型参数化，即把类型定义为参数，从而实现代码的重用，使得一段程序可以用于不同类型的对象，大幅度地提高程序设计的效率。</p>
-    
-    <a class="article-more-a" href="/2024/05/18/Cpp-progranming/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/05/18/Cpp-progranming/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo-Create-Blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/05/17/Hexo-Create-Blog/" target="_blank">Hexo系列 搭建博客网站</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/05/17/Hexo-Create-Blog/" class="archive-article-date">
-        <time datetime="2024-05-16T17:22:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-17</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>这篇文章详细介绍了使用 Hexo 搭建个人博客的过程，包括安装 Git 和 Node.js、创建 GitHub 仓库、配置 Hexo 插件等步骤。</p>
-    
-    <a class="article-more-a" href="/2024/05/17/Hexo-Create-Blog/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/05/17/Hexo-Create-Blog/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo-Commands" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/05/17/Hexo-Commands/" target="_blank">Hexo-常用命令详解</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/05/17/Hexo-Commands/" class="archive-article-date">
-        <time datetime="2024-05-16T17:15:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-17</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>这篇文章介绍了如何使用 Hexo 框架快速创建自己的博客网站，并详细介绍了 Hexo 提供的常用命令及其使用方法。通过 <code>hexo init</code> 命令可以初始化本地文件夹为网站的根目录，<code>hexo new</code> 命令用于新建文章，<code>hexo generate</code> 命令用于生成静态文件，<code>hexo server</code> 命令用于启动本地服务器，<code>hexo deploy</code> 命令用于部署网站，<code>hexo clean</code> 命令用于清理缓存文件等。此外，还介绍了一些常用的命令选项和安全模式、调试模式、静默模式等特性。通过本文的介绍，读者可以快速掌握 Hexo 框架的基本用法，从而更好地管理和发布自己的博客内容。</p>
-    
-    <a class="article-more-a" href="/2024/05/17/Hexo-Commands/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/05/17/Hexo-Commands/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -1144,8 +576,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
