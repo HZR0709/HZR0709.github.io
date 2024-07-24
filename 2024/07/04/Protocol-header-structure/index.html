@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://HZR0709.github.io">
-  <title>Tag: C++、Socket | 个人博客</title>
+  <title>Protocol header structure | 个人博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="心有所向，无问东西">
-<meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="https://hzr0709.github.io/tags/C-%E3%80%81Socket/index.html">
+  <meta name="description" content="全面的网络协议结构体定义（转） &#x2F;*********************************************&#x2F;  &#x2F;&#x2F;计算机网络各种协议的结构  #define ETHER_ADDR_LEN 6 &#x2F;&#x2F;NIC物理地址占6字节  #define MAXDATA 10240  &#x2F;* 数据包中的TCP包头,IP包头,UDP包头,ARP包,Ethernet包等. 以及各种表.路由寻址表,地址">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Protocol header structure">
+<meta property="og:url" content="https://hzr0709.github.io/2024/07/04/Protocol-header-structure/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="心有所向，无问东西">
+<meta property="og:description" content="全面的网络协议结构体定义（转） &#x2F;*********************************************&#x2F;  &#x2F;&#x2F;计算机网络各种协议的结构  #define ETHER_ADDR_LEN 6 &#x2F;&#x2F;NIC物理地址占6字节  #define MAXDATA 10240  &#x2F;* 数据包中的TCP包头,IP包头,UDP包头,ARP包,Ethernet包等. 以及各种表.路由寻址表,地址">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-04T09:53:36.000Z">
+<meta property="article:modified_time" content="2024-07-07T06:44:55.248Z">
 <meta property="article:author" content="hzr">
-<meta property="article:tag" content="hzr">
+<meta property="article:tag" content="TCP&#x2F;IP">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
@@ -224,65 +226,245 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Protocol-header-structure" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/06/11/HTTP%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="archive-article-date">
-        <time datetime="2024-06-11T14:34:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-11</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/06/11/HTTP%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_blank">HTTP服务器</a>
   
+    <h1 class="article-title" itemprop="name">
+      Protocol header structure
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2024/07/04/Protocol-header-structure/" class="archive-article-date">
+        <time datetime="2024-07-04T09:53:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-04</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">582字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">2分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><strong>全面的网络协议结构体定义（转）</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//计算机网络各种协议的结构  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ETHER_ADDR_LEN 6 <span class="comment">//NIC物理地址占6字节  </span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXDATA 10240  </span></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">数据包中的TCP包头,IP包头,UDP包头,ARP包,Ethernet包等. </span></span><br><span class="line"><span class="comment">以及各种表.路由寻址表,地址解析协议表DNS表等 </span></span><br><span class="line"><span class="comment">*/</span>  </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ETHERTYPE_IP 0x0800   <span class="comment">//IP Protocal  </span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ETHERTYPE_ARP 0x0806   <span class="comment">//Address Resolution Protocal  </span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ETHERTYPE_REVARP 0x0835   <span class="comment">//Reverse Address Resolution Protocal 逆地址解析协议  </span></span></span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//ethernet  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">ether_header</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    u_char ether_dhost[ETHER_ADDR_LEN];  </span><br><span class="line">    u_char ether_shost[ETHER_ADDR_LEN];  </span><br><span class="line">    u_short ether_type;  </span><br><span class="line">&#125;ETH_HEADER;  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//ether_header eth;  </span></span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//arp  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">arphdr</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    u_short ar_hrd;  </span><br><span class="line">    u_short ar_pro;  </span><br><span class="line">    u_char ar_hln;  </span><br><span class="line">    u_char ar_pln;  </span><br><span class="line">    u_short ar_op;  </span><br><span class="line">&#125;ARP_HEADER;  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//IP报头  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">ip</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    u_int ip_v:<span class="number">4</span>; <span class="comment">//version(版本)  </span></span><br><span class="line">    u_int ip_hl:<span class="number">4</span>; <span class="comment">//header length(报头长度)  </span></span><br><span class="line">    u_char ip_tos;  </span><br><span class="line">    u_short ip_len;  </span><br><span class="line">    u_short ip_id;  </span><br><span class="line">    u_short ip_off;  </span><br><span class="line">    u_char ip_ttl;  </span><br><span class="line">    u_char ip_p;  </span><br><span class="line">    u_short ip_sum;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">in_addr</span> ip_src;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">in_addr</span> ip_dst;  </span><br><span class="line">&#125;IP_HEADER;  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//TCP报头结构体  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">tcphdr</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_short th_sport;  </span><br><span class="line">    u_short th_dport;  </span><br><span class="line">    u_int th_seq;  </span><br><span class="line">    u_int th_ack;  </span><br><span class="line">    u_int th_off:<span class="number">4</span>;  </span><br><span class="line">    u_int th_x2:<span class="number">4</span>;  </span><br><span class="line">    u_char th_flags;  </span><br><span class="line">    u_short th_win;  </span><br><span class="line">    u_short th_sum;  </span><br><span class="line">    u_short th_urp;  </span><br><span class="line">&#125;TCP_HEADER;  </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TH_FIN 0x01  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TH_SYN 0x02  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TH_RST 0x04  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TH_PUSH 0x08  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TH_ACK 0x10  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TH_URG 0x20  </span></span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//UDP报头结构体*/  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">udphdr</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_short uh_sport;  </span><br><span class="line">    u_short uh_dport;  </span><br><span class="line">    u_short uh_ulen;  </span><br><span class="line">    u_short uh_sum;  </span><br><span class="line">&#125;UDP_HEADER;  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//=============================================  </span></span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*ARP与ETHERNET生成的报头*/</span>  </span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">ether_arp</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">arphdr</span> ea_hdr;  </span><br><span class="line">    u_char arp_sha[ETHER_ADDR_LEN];  </span><br><span class="line">    u_char arp_spa[<span class="number">4</span>];  </span><br><span class="line">    u_char arp_tha[ETHER_ADDR_LEN];  </span><br><span class="line">    u_char arp_tpa[<span class="number">4</span>];  </span><br><span class="line">&#125;ETH_ARP;  </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> arp_hrd ea_hdr.ar_hrd  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> arp_pro ea_hdr.ar_pro  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> arp_hln ea_hdr.ar_hln  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> arp_pln ea_hdr.ar_pln  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> arp_op ea_hdr.ar_op  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ARPHRD 1  </span></span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//tcp与ip生成的报头  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">packet_tcp</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">ip</span> ip;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">tcphdr</span> tcp;  </span><br><span class="line">    u_char data[MAXDATA];  </span><br><span class="line">&#125;TCP_IP;  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//udp与ip生成的报头  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">packet_udp</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">ip</span> ip;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">udphdr</span> udp;  </span><br><span class="line">&#125;UDP_IP;  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//ICMP的各种形式  </span></span><br><span class="line"><span class="comment">//icmpx,x==icmp_type;  </span></span><br><span class="line"><span class="comment">//icmp报文(能到达目的地,响应-请求包)  </span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">icmp8</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_char icmp_type; <span class="comment">//type of message(报文类型)  </span></span><br><span class="line">    u_char icmp_code; <span class="comment">//type sub code(报文类型子码)  </span></span><br><span class="line">    u_short icmp_cksum;  </span><br><span class="line">    u_short icmp_id;  </span><br><span class="line">    u_short icmp_seq;  </span><br><span class="line">    <span class="type">char</span> icmp_data[<span class="number">1</span>];  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="comment">//icmp报文(能返回目的地,响应-应答包)  </span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">icmp0</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_char icmp_type; <span class="comment">//type of message(报文类型)  </span></span><br><span class="line">    u_char icmp_code; <span class="comment">//type sub code(报文类型子码)  </span></span><br><span class="line">    u_short icmp_cksum;  </span><br><span class="line">    u_short icmp_id;  </span><br><span class="line">    u_short icmp_seq;  </span><br><span class="line">    <span class="type">char</span> icmp_data[<span class="number">1</span>];  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="comment">//icmp报文(不能到达目的地)  </span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">icmp3</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_char icmp_type; <span class="comment">//type of message(报文类型)  </span></span><br><span class="line">    u_char icmp_code; <span class="comment">//type sub code(报文类型子码),例如:0网络原因不能到达,1主机原因不能到达...  </span></span><br><span class="line">    u_short icmp_cksum;  </span><br><span class="line">    u_short icmp_pmvoid;  </span><br><span class="line">    u_short icmp_nextmtu;  </span><br><span class="line">    <span class="type">char</span> icmp_data[<span class="number">1</span>];  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="comment">//icmp报文(重发结构体)  </span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">icmp5</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_char icmp_type; <span class="comment">//type of message(报文类型)  </span></span><br><span class="line">    u_char icmp_code; <span class="comment">//type sub code(报文类型子码)  </span></span><br><span class="line">    u_short icmp_cksum;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">in_addr</span> icmp_gwaddr;  </span><br><span class="line">    <span class="type">char</span> icmp_data[<span class="number">1</span>];  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">icmp11</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_char icmp_type; <span class="comment">//type of message(报文类型)  </span></span><br><span class="line">    u_char icmp_code; <span class="comment">//type sub code(报文类型子码)  </span></span><br><span class="line">    u_short icmp_cksum;  </span><br><span class="line">    u_int icmp_void;  </span><br><span class="line">    <span class="type">char</span> icmp_data[<span class="number">1</span>];  </span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          hzr
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://HZR0709.github.io/2024/07/04/Protocol-header-structure/" title="Protocol header structure" target="_blank">https://HZR0709.github.io/2024/07/04/Protocol-header-structure/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C++、Socket</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">TCP/IP</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://hzr0709.github.io/2024/07/04/Protocol-header-structure/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2024/07/23/Mysql-usage/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Mysql 数据库基本操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/06/27/Google-Test/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Google Test</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -323,9 +505,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

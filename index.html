@@ -231,6 +231,388 @@
             
 
   
+    <article id="post-Mysql-usage" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/07/23/Mysql-usage/" target="_blank">Mysql 数据库基本操作</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/07/23/Mysql-usage/" class="archive-article-date">
+        <time datetime="2024-07-23T08:53:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="MySQL基本操作">MySQL基本操作</h2>
+<h3 id="1-查询数据库">1. 查询数据库</h3>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 查询所有数据库</span></span><br><span class="line"><span class="keyword">SHOW</span> DATABASES;</span><br><span class="line"><span class="comment">-- 查询某个数据库的编码</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> DATABASE test;</span><br></pre></td></tr></table></figure>
+<h3 id="2-修改数据库">2. 修改数据库</h3>
+<h3 id="3-创建数据库和表">3. 创建数据库和表</h3>
+<h4 id="创建数据库">创建数据库</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE school;</span><br></pre></td></tr></table></figure>
+<p><code>CREATE DATABASE</code>：用于创建新的数据库。</p>
+<p><code>school</code>：数据库名称。</p>
+<h4 id="使用数据库">使用数据库</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">USE school;</span><br></pre></td></tr></table></figure>
+<p><code>USE</code>：选择数据库。</p>
+<h4 id="创建表">创建表</h4>
+<h5 id="CREATE-TABLE-语句">CREATE TABLE 语句</h5>
+<p><code>CREATE TABLE</code> 语句用于在数据库中创建一个新表。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student (</span><br><span class="line">    id <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY AUTO_INCREMENT,</span><br><span class="line">    sage <span class="type">INT</span>,</span><br><span class="line">    sname <span class="type">VARCHAR</span>(<span class="number">32</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    gender <span class="type">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    score <span class="keyword">DOUBLE</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    birthday <span class="type">DATE</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h6 id="语法详细解释：">语法详细解释：</h6>
+<ol>
+<li><strong>CREATE TABLE student</strong>:
+<ul>
+<li><code>CREATE TABLE</code> 是创建表的命令。</li>
+<li><code>student</code> 是表的名称。</li>
+</ul>
+</li>
+<li><strong>列定义</strong>:
+<ul>
+<li>每个字段用逗号分隔，并且定义了字段名称、数据类型和约束条件。</li>
+</ul>
+</li>
+<li><strong>id INT PRIMARY KEY AUTO_INCREMENT</strong>:
+<ul>
+<li><code>id</code> 是列的名称。</li>
+<li><code>INT</code> 指定数据类型为整数。</li>
+<li><code>PRIMARY KEY</code> 将这列设置为主键，保证列中的值唯一且不为空。</li>
+<li><code>AUTO_INCREMENT</code> 自动生成唯一的整数值，每次插入新行时递增。</li>
+</ul>
+</li>
+<li><strong>sage INT</strong>:
+<ul>
+<li><code>sage</code> 是列的名称。</li>
+<li><code>INT</code> 指定数据类型为整数。</li>
+</ul>
+</li>
+<li><strong>sname VARCHAR(32) NOT NULL</strong>:
+<ul>
+<li><code>sname</code> 是列的名称。</li>
+<li><code>VARCHAR(32)</code> 指定数据类型为可变长度字符串，最大长度为32个字符。</li>
+<li><code>NOT NULL</code> 表示此列不能为空。</li>
+</ul>
+</li>
+<li><strong>gender VARCHAR(10) NOT NULL</strong>:
+<ul>
+<li><code>gender</code> 是列的名称。</li>
+<li><code>VARCHAR(10)</code> 指定数据类型为可变长度字符串，最大长度为10个字符。</li>
+<li><code>NOT NULL</code> 表示此列不能为空。</li>
+</ul>
+</li>
+<li><strong>score DOUBLE NOT NULL</strong>:
+<ul>
+<li><code>score</code> 是列的名称。</li>
+<li><code>DOUBLE</code> 指定数据类型为双精度浮点数。</li>
+<li><code>NOT NULL</code> 表示此列不能为空。</li>
+</ul>
+</li>
+<li><strong>birthday DATE</strong>:
+<ul>
+<li><code>birthday</code> 是列的名称。</li>
+<li><code>DATE</code> 指定数据类型为日期。</li>
+</ul>
+</li>
+</ol>
+<h5 id="约束条件的详细说明">约束条件的详细说明</h5>
+<ul>
+<li><strong>PRIMARY KEY</strong>:
+<ul>
+<li>主键约束，用于唯一标识表中的每一行数据。一个表只能有一个主键。</li>
+</ul>
+</li>
+<li><strong>AUTO_INCREMENT</strong>:
+<ul>
+<li>仅用于整数类型的列。每插入一条新记录时，自动生成一个唯一的数值，通常从1开始递增。</li>
+</ul>
+</li>
+<li><strong>NOT NULL</strong>:
+<ul>
+<li>此约束条件表示该列不允许存储NULL值，即该字段必须有值。</li>
+</ul>
+</li>
+</ul>
+<h5 id="数据类型的详细说明">数据类型的详细说明</h5>
+<ul>
+<li><strong>INT</strong>:
+<ul>
+<li>用于存储整数值，范围通常为-2147483648到2147483647。</li>
+</ul>
+</li>
+<li><strong>VARCHAR(n)</strong>:
+<ul>
+<li>可变长度的字符串，<code>n</code>指定了字符串的最大长度。例如，<code>VARCHAR(32)</code>表示最大长度为32个字符。</li>
+</ul>
+</li>
+<li><strong>DOUBLE</strong>:
+<ul>
+<li>双精度浮点数，用于存储浮点数，精度高于FLOAT类型。</li>
+</ul>
+</li>
+<li><strong>DATE</strong>:
+<ul>
+<li>用于存储日期值，格式为<code>YYYY-MM-DD</code>。</li>
+</ul>
+</li>
+</ul>
+<p>这段SQL语句创建了一个名为<code>student</code>的表，表中的每一行代表一个学生，包含学生的ID、年龄、姓名、性别、成绩和生日信息。</p>
+<h3 id="4-插入数据">4. 插入数据</h3>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> student (sage, sname, gender, score, birthday) <span class="keyword">VALUES</span> (<span class="number">18</span>, <span class="string">&#x27;Alice&#x27;</span>, <span class="string">&#x27;Female&#x27;</span>, <span class="number">85.5</span>, <span class="string">&#x27;2005-08-15&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p><code>INSERT INTO</code>：插入数据的命令。</p>
+<p><code>student</code>：表名称。</p>
+<p><code>(sage, sname, gender, score, birthday)</code>：要插入数据的列。</p>
+<p><code>VALUES</code>：指定要插入的值。</p>
+<h3 id="5-查询数据">5. 查询数据</h3>
+<h4 id="查询所有数据">查询所有数据</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>SELECT *</code>：选择所有列。</li>
+<li><code>FROM student</code>：从<code>student</code>表中。</li>
+</ul>
+<h4 id="查询特定列">查询特定列</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> sname, score <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>SELECT sname, score</code>：选择特定的列<code>name</code>和<code>score</code>。</li>
+</ul>
+<h4 id="查询带条件的数据">查询带条件的数据</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> gender <span class="operator">=</span> <span class="string">&#x27;Female&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>WHERE</code>：指定查询条件。</li>
+</ul>
+<h4 id="排序查询结果">排序查询结果</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> student <span class="keyword">ORDER</span> <span class="keyword">BY</span> score <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>ORDER BY</code>：排序查询结果。</li>
+<li><code>score DESC</code>：按<code>score</code>列降序排列（<code>ASC</code>为升序）。</li>
+</ul>
+<h3 id="6-更新数据">6. 更新数据</h3>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> score <span class="operator">=</span> <span class="number">90</span> <span class="keyword">WHERE</span> sname <span class="operator">=</span> <span class="string">&#x27;Alice&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>UPDATE</code>：更新命令。</li>
+<li><code>student</code>：表名称。</li>
+<li><code>SET score = 90</code>：要更新的列及其新值。</li>
+<li><code>WHERE</code>：指定更新条件。</li>
+</ul>
+<h3 id="7-删除数据">7. 删除数据</h3>
+<h4 id="删除特定数据">删除特定数据</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sname <span class="operator">=</span> <span class="string">&#x27;Alice&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>DELETE FROM</code>：删除命令。</li>
+<li><code>student</code>：表名称。</li>
+<li><code>WHERE</code>：指定删除条件。</li>
+</ul>
+<h4 id="删除所有数据">删除所有数据</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+<p>注意：这将删除表中的所有数据，但表结构仍然存在。</p>
+<h3 id="8-删除表和数据库">8. 删除表和数据库</h3>
+<h4 id="删除表">删除表</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> student;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>DROP TABLE</code>：删除表的命令。</li>
+</ul>
+<h4 id="删除数据库">删除数据库</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> DATABASE school;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>DROP DATABASE</code>：删除数据库的命令。</li>
+</ul>
+<h3 id="9-使用索引">9. 使用索引</h3>
+<h4 id="创建索引">创建索引</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX idx_sname <span class="keyword">ON</span> student (sname);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>CREATE INDEX</code>：创建索引的命令。</li>
+<li><code>idx_sname</code>：索引名称。</li>
+<li><code>ON student (sname)</code>：在<code>student</code>表的<code>sname</code>列上创建索引。</li>
+</ul>
+<h4 id="删除索引">删除索引</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> INDEX idx_sname <span class="keyword">ON</span> student;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>DROP INDEX</code>：删除索引的命令。</li>
+</ul>
+<h3 id="10-使用视图">10. 使用视图</h3>
+<h4 id="创建视图">创建视图</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> top_students <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> sname, score <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> score <span class="operator">&gt;</span> <span class="number">90</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>CREATE VIEW</code>：创建视图的命令。</li>
+<li><code>top_students</code>：视图名称。</li>
+<li><code>SELECT sname, score FROM student WHERE score &gt; 90</code>：定义视图的查询。</li>
+</ul>
+<h4 id="查询视图">查询视图</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> top_students;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查询视图就像查询表一样。</li>
+</ul>
+<h4 id="删除视图">删除视图</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">VIEW</span> top_students;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>DROP VIEW</code>：删除视图的命令。</li>
+</ul>
+<h2 id="示例程序">示例程序</h2>
+<p><code>StudentManager.h</code>：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;mysql.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> student_id;</span><br><span class="line">	std::string student_name;</span><br><span class="line">	std::string class_id;</span><br><span class="line">&#125;Student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StudentManager</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">StudentManager</span>();</span><br><span class="line">	~<span class="built_in">StudentManager</span>();</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">static</span> StudentManager* <span class="title">GetInstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">static</span> StudentManager StudentManager;</span><br><span class="line">		<span class="keyword">return</span> &amp;StudentManager;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">insert_student</span><span class="params">(Student&amp; stu)</span></span>;</span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">update_student</span><span class="params">(Student&amp; stu)</span></span>;</span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">delete_student</span><span class="params">(<span class="type">int</span> student_id)</span></span>;</span><br><span class="line">	<span class="function">std::vector&lt;Student&gt; <span class="title">get_students</span><span class="params">(std::string condition = <span class="string">&quot;&quot;</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	MYSQL* con;</span><br><span class="line">	<span class="type">const</span> <span class="type">char</span>* host = <span class="string">&quot;127.0.0.1&quot;</span>;</span><br><span class="line">	<span class="type">const</span> <span class="type">char</span>* user = <span class="string">&quot;root&quot;</span>;</span><br><span class="line">	<span class="type">const</span> <span class="type">char</span>* pw = <span class="string">&quot;QQ903458367&quot;</span>;</span><br><span class="line">	<span class="type">const</span> <span class="type">char</span>* database_name = <span class="string">&quot;database_test&quot;</span>;</span><br><span class="line">	<span class="type">const</span> <span class="type">int</span> port = <span class="number">3306</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>StudentManager.cpp</code>:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;StudentManager.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">StudentManager::<span class="built_in">StudentManager</span>()</span><br><span class="line">&#123;</span><br><span class="line">	con = <span class="built_in">mysql_init</span>(<span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">mysql_options</span>(con, MYSQL_SET_CHARSET_NAME, <span class="string">&quot;GBK&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (!<span class="built_in">mysql_real_connect</span>(con, host, user, pw, database_name, port, <span class="literal">NULL</span>, <span class="number">0</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">StudentManager::~<span class="built_in">StudentManager</span>()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">mysql_close</span>(con);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">StudentManager::insert_student</span><span class="params">(Student&amp; stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">char</span> sql[<span class="number">1024</span>];</span><br><span class="line">	<span class="built_in">sprintf</span>(sql, <span class="string">&quot;insert into studens (student_id, student_name, class_id) values(%d, &#x27;%s&#x27;, &#x27;%s&#x27;)&quot;</span>,</span><br><span class="line">		stu.student_id, stu.student_name.<span class="built_in">c_str</span>(), stu.class_id.<span class="built_in">c_str</span>());</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">mysql_query</span>(con, sql))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(stderr, <span class="string">&quot;Failed to insert data : Error%s\n&quot;</span>, <span class="built_in">mysql_error</span>(con));</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">StudentManager::update_student</span><span class="params">(Student&amp; stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">char</span> sql[<span class="number">1024</span>];</span><br><span class="line">	<span class="built_in">sprintf</span>(sql, <span class="string">&quot;UPDATE studens SET student_name = &#x27;%s&#x27;, class_id = &#x27;%s&#x27;&quot;</span></span><br><span class="line">		<span class="string">&quot;where student_id = %d&quot;</span>, stu.student_name.<span class="built_in">c_str</span>(), stu.class_id.<span class="built_in">c_str</span>(),</span><br><span class="line">		stu.student_id);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">mysql_query</span>(con, sql))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(stderr, <span class="string">&quot;Failed to update data : Error:%s\n&quot;</span>, <span class="built_in">mysql_error</span>(con));</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">StudentManager::delete_student</span><span class="params">(<span class="type">int</span> student_id)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">char</span> sql[<span class="number">1024</span>];</span><br><span class="line">	<span class="built_in">sprintf</span>(sql, <span class="string">&quot;DELETE FROM studens WHERE student_id = &#x27;%d&#x27;&quot;</span>, student_id);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">mysql_query</span>(con, sql))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(stderr, <span class="string">&quot;Failed to update data : Error:%s\n&quot;</span>, <span class="built_in">mysql_error</span>(con));</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::vector&lt;Student&gt; <span class="title">StudentManager::get_students</span><span class="params">(std::string condition)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	std::vector&lt;Student&gt; studList;</span><br><span class="line">	<span class="type">char</span> sql[<span class="number">1024</span>];</span><br><span class="line">	<span class="built_in">sprintf</span>(sql, <span class="string">&quot;SELECT * FROM studens %s&quot;</span>, condition.<span class="built_in">c_str</span>());</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">mysql_query</span>(con, sql))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(stderr, <span class="string">&quot;Failed to selete data : Error:%s\n&quot;</span>, <span class="built_in">mysql_error</span>(con));</span><br><span class="line">		<span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	MYSQL_RES* res = <span class="built_in">mysql_store_result</span>(con);</span><br><span class="line">	MYSQL_ROW row;</span><br><span class="line">	<span class="keyword">while</span> ((row = <span class="built_in">mysql_fetch_row</span>(res)))</span><br><span class="line">	&#123;</span><br><span class="line">		Student stu;</span><br><span class="line">		stu.student_id = <span class="built_in">atoi</span>(row[<span class="number">0</span>]);</span><br><span class="line">		stu.student_name = row[<span class="number">1</span>];</span><br><span class="line">		stu.class_id = row[<span class="number">2</span>];</span><br><span class="line">		studList.<span class="built_in">push_back</span>(stu);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> studList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>main.cpp</code>:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;StudentManager.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//增</span></span><br><span class="line">	Student stu1&#123; <span class="number">2222</span>, <span class="string">&quot;吴彦祖&quot;</span>, <span class="string">&quot;软件一班&quot;</span> &#125;;</span><br><span class="line">	StudentManager::<span class="built_in">GetInstance</span>()-&gt;<span class="built_in">insert_student</span>(stu1);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//改</span></span><br><span class="line">	Student stu2&#123; <span class="number">2222</span>, <span class="string">&quot;彭于晏&quot;</span>, <span class="string">&quot;物联网一班&quot;</span> &#125;;</span><br><span class="line">	StudentManager::<span class="built_in">GetInstance</span>()-&gt;<span class="built_in">update_student</span>(stu2);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//删</span></span><br><span class="line">	StudentManager::<span class="built_in">GetInstance</span>()-&gt;<span class="built_in">delete_student</span>(<span class="number">2222</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//查</span></span><br><span class="line">	std::vector&lt;student&gt; ret = StudentManager::<span class="built_in">GetInstance</span>()-&gt;<span class="built_in">get_students</span>();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span>&amp; t : ret)</span><br><span class="line">	&#123;</span><br><span class="line">		std::cout &lt;&lt; t.student_id &lt;&lt; <span class="string">&quot;  &quot;</span> &lt;&lt; t.student_name &lt;&lt; <span class="string">&quot;  &quot;</span> &lt;&lt; t.class_id &lt;&lt; std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/07/23/Mysql-usage/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Protocol-header-structure" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/07/04/Protocol-header-structure/" target="_blank">Protocol header structure</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/07/04/Protocol-header-structure/" class="archive-article-date">
+        <time datetime="2024-07-04T09:53:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><strong>全面的网络协议结构体定义（转）</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//计算机网络各种协议的结构  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ETHER_ADDR_LEN 6 <span class="comment">//NIC物理地址占6字节  </span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXDATA 10240  </span></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">数据包中的TCP包头,IP包头,UDP包头,ARP包,Ethernet包等. </span></span><br><span class="line"><span class="comment">以及各种表.路由寻址表,地址解析协议表DNS表等 </span></span><br><span class="line"><span class="comment">*/</span>  </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ETHERTYPE_IP 0x0800   <span class="comment">//IP Protocal  </span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ETHERTYPE_ARP 0x0806   <span class="comment">//Address Resolution Protocal  </span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ETHERTYPE_REVARP 0x0835   <span class="comment">//Reverse Address Resolution Protocal 逆地址解析协议  </span></span></span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//ethernet  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">ether_header</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    u_char ether_dhost[ETHER_ADDR_LEN];  </span><br><span class="line">    u_char ether_shost[ETHER_ADDR_LEN];  </span><br><span class="line">    u_short ether_type;  </span><br><span class="line">&#125;ETH_HEADER;  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//ether_header eth;  </span></span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//arp  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">arphdr</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    u_short ar_hrd;  </span><br><span class="line">    u_short ar_pro;  </span><br><span class="line">    u_char ar_hln;  </span><br><span class="line">    u_char ar_pln;  </span><br><span class="line">    u_short ar_op;  </span><br><span class="line">&#125;ARP_HEADER;  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//IP报头  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">ip</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    u_int ip_v:<span class="number">4</span>; <span class="comment">//version(版本)  </span></span><br><span class="line">    u_int ip_hl:<span class="number">4</span>; <span class="comment">//header length(报头长度)  </span></span><br><span class="line">    u_char ip_tos;  </span><br><span class="line">    u_short ip_len;  </span><br><span class="line">    u_short ip_id;  </span><br><span class="line">    u_short ip_off;  </span><br><span class="line">    u_char ip_ttl;  </span><br><span class="line">    u_char ip_p;  </span><br><span class="line">    u_short ip_sum;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">in_addr</span> ip_src;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">in_addr</span> ip_dst;  </span><br><span class="line">&#125;IP_HEADER;  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//TCP报头结构体  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">tcphdr</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_short th_sport;  </span><br><span class="line">    u_short th_dport;  </span><br><span class="line">    u_int th_seq;  </span><br><span class="line">    u_int th_ack;  </span><br><span class="line">    u_int th_off:<span class="number">4</span>;  </span><br><span class="line">    u_int th_x2:<span class="number">4</span>;  </span><br><span class="line">    u_char th_flags;  </span><br><span class="line">    u_short th_win;  </span><br><span class="line">    u_short th_sum;  </span><br><span class="line">    u_short th_urp;  </span><br><span class="line">&#125;TCP_HEADER;  </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TH_FIN 0x01  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TH_SYN 0x02  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TH_RST 0x04  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TH_PUSH 0x08  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TH_ACK 0x10  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TH_URG 0x20  </span></span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//UDP报头结构体*/  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">udphdr</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_short uh_sport;  </span><br><span class="line">    u_short uh_dport;  </span><br><span class="line">    u_short uh_ulen;  </span><br><span class="line">    u_short uh_sum;  </span><br><span class="line">&#125;UDP_HEADER;  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//=============================================  </span></span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*ARP与ETHERNET生成的报头*/</span>  </span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">ether_arp</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">arphdr</span> ea_hdr;  </span><br><span class="line">    u_char arp_sha[ETHER_ADDR_LEN];  </span><br><span class="line">    u_char arp_spa[<span class="number">4</span>];  </span><br><span class="line">    u_char arp_tha[ETHER_ADDR_LEN];  </span><br><span class="line">    u_char arp_tpa[<span class="number">4</span>];  </span><br><span class="line">&#125;ETH_ARP;  </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> arp_hrd ea_hdr.ar_hrd  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> arp_pro ea_hdr.ar_pro  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> arp_hln ea_hdr.ar_hln  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> arp_pln ea_hdr.ar_pln  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> arp_op ea_hdr.ar_op  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ARPHRD 1  </span></span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//tcp与ip生成的报头  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">packet_tcp</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">ip</span> ip;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">tcphdr</span> tcp;  </span><br><span class="line">    u_char data[MAXDATA];  </span><br><span class="line">&#125;TCP_IP;  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//udp与ip生成的报头  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">packet_udp</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">ip</span> ip;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">udphdr</span> udp;  </span><br><span class="line">&#125;UDP_IP;  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">/*********************************************/</span>  </span><br><span class="line"><span class="comment">//ICMP的各种形式  </span></span><br><span class="line"><span class="comment">//icmpx,x==icmp_type;  </span></span><br><span class="line"><span class="comment">//icmp报文(能到达目的地,响应-请求包)  </span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">icmp8</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_char icmp_type; <span class="comment">//type of message(报文类型)  </span></span><br><span class="line">    u_char icmp_code; <span class="comment">//type sub code(报文类型子码)  </span></span><br><span class="line">    u_short icmp_cksum;  </span><br><span class="line">    u_short icmp_id;  </span><br><span class="line">    u_short icmp_seq;  </span><br><span class="line">    <span class="type">char</span> icmp_data[<span class="number">1</span>];  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="comment">//icmp报文(能返回目的地,响应-应答包)  </span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">icmp0</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_char icmp_type; <span class="comment">//type of message(报文类型)  </span></span><br><span class="line">    u_char icmp_code; <span class="comment">//type sub code(报文类型子码)  </span></span><br><span class="line">    u_short icmp_cksum;  </span><br><span class="line">    u_short icmp_id;  </span><br><span class="line">    u_short icmp_seq;  </span><br><span class="line">    <span class="type">char</span> icmp_data[<span class="number">1</span>];  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="comment">//icmp报文(不能到达目的地)  </span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">icmp3</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_char icmp_type; <span class="comment">//type of message(报文类型)  </span></span><br><span class="line">    u_char icmp_code; <span class="comment">//type sub code(报文类型子码),例如:0网络原因不能到达,1主机原因不能到达...  </span></span><br><span class="line">    u_short icmp_cksum;  </span><br><span class="line">    u_short icmp_pmvoid;  </span><br><span class="line">    u_short icmp_nextmtu;  </span><br><span class="line">    <span class="type">char</span> icmp_data[<span class="number">1</span>];  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="comment">//icmp报文(重发结构体)  </span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">icmp5</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_char icmp_type; <span class="comment">//type of message(报文类型)  </span></span><br><span class="line">    u_char icmp_code; <span class="comment">//type sub code(报文类型子码)  </span></span><br><span class="line">    u_short icmp_cksum;  </span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">in_addr</span> icmp_gwaddr;  </span><br><span class="line">    <span class="type">char</span> icmp_data[<span class="number">1</span>];  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">icmp11</span>   </span><br><span class="line">&#123;  </span><br><span class="line">    u_char icmp_type; <span class="comment">//type of message(报文类型)  </span></span><br><span class="line">    u_char icmp_code; <span class="comment">//type sub code(报文类型子码)  </span></span><br><span class="line">    u_short icmp_cksum;  </span><br><span class="line">    u_int icmp_void;  </span><br><span class="line">    <span class="type">char</span> icmp_data[<span class="number">1</span>];  </span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">TCP/IP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/07/04/Protocol-header-structure/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Google-Test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -455,7 +837,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C++，TCP/IP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">TCP/IP</a>
         		</li>
       		
 		</ul>
@@ -924,182 +1306,6 @@
 
 
   
-    <article id="post-Hexo-Create-Blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/05/17/Hexo-Create-Blog/" target="_blank">Hexo系列 搭建博客网站</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/05/17/Hexo-Create-Blog/" class="archive-article-date">
-        <time datetime="2024-05-16T17:22:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-17</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>这篇文章详细介绍了使用 Hexo 搭建个人博客的过程，包括安装 Git 和 Node.js、创建 GitHub 仓库、配置 Hexo 插件等步骤。</p>
-    
-    <a class="article-more-a" href="/2024/05/17/Hexo-Create-Blog/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/05/17/Hexo-Create-Blog/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo-Commands" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/05/17/Hexo-Commands/" target="_blank">Hexo-常用命令详解</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/05/17/Hexo-Commands/" class="archive-article-date">
-        <time datetime="2024-05-16T17:15:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-17</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>这篇文章介绍了如何使用 Hexo 框架快速创建自己的博客网站，并详细介绍了 Hexo 提供的常用命令及其使用方法。通过 <code>hexo init</code> 命令可以初始化本地文件夹为网站的根目录，<code>hexo new</code> 命令用于新建文章，<code>hexo generate</code> 命令用于生成静态文件，<code>hexo server</code> 命令用于启动本地服务器，<code>hexo deploy</code> 命令用于部署网站，<code>hexo clean</code> 命令用于清理缓存文件等。此外，还介绍了一些常用的命令选项和安全模式、调试模式、静默模式等特性。通过本文的介绍，读者可以快速掌握 Hexo 框架的基本用法，从而更好地管理和发布自己的博客内容。</p>
-    
-    <a class="article-more-a" href="/2024/05/17/Hexo-Commands/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/05/17/Hexo-Commands/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1258,15 +1464,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">GoogleTest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">DecisionTree， RandomForest</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">C++、Socket</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GoogleTest</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1286,7 +1492,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++，TCP/IP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">TCP/IP</a>
               </li>
             
             <div class="clearfix"></div>
